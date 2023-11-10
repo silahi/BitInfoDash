@@ -77,51 +77,94 @@ Assurez-vous d'avoir installé les outils suivants sur votre machine :
     git clone https://github.com/silahi/BitInfoDash.git
     ```
 
-2. **Backend : Installation et Configuration de la Base de Données**
+2. **Allez dans le dossier BitInfoDash**
+
+
+### Configuration Globale
+
+1. **Option 1 - Utiliser Docker (Recommandé si Docker est installé) :**
+
+    - Assurez-vous d'avoir Docker installé sur votre machine. Si ce n'est pas le cas, vous pouvez le télécharger depuis [le site officiel Docker](https://www.docker.com/get-started).
 
     - Allez dans le dossier `backend`.
-    - Exécutez le script d'installation :
 
-        ```bash
-        ../scripts/install.sh
+    - Ouvrez le fichier `src/main/resources/application-dev.yml` et assurez-vous que les paramètres de connexion de la base de données sont configurés comme suit :
+
+        ```yaml
+        url: jdbc:postgresql://localhost:5432/bitinfodash
+        username: bitinfodash
+        password: bitinfodash
         ```
 
-    - Configurez les paramètres de connexion dans `backend/src/main/resources/application-dev.yml`.
+    - Revenez à la racine du projet.
 
-3. **Frontend : Installation des Dépendances**
-
-    - Allez dans le dossier `frontend`.
-    - Exécutez le script d'installation :
-
-        ```bash
-        ../scripts/install.sh
-        ```
-
-4. **Configuration Globale**
-
-    - Exécutez le script de configuration pour paramétrer l'application :
-
-        ```bash
-        ../scripts/configure.sh
-        ```
-
-5. **Backend et Frontend : Exécution avec Docker**
-
-    - Utilisez Docker Compose pour démarrer l'application :
+    - Exécutez la commande suivante pour démarrer la base de données PostgreSQL avec Docker Compose :
 
         ```bash
         docker-compose up -d
         ```
 
-    - L'application sera disponible à l'adresse [http://localhost:4200](http://localhost:4200).
+    - La base de données PostgreSQL sera maintenant accessible à l'adresse [jdbc:postgresql://localhost:5432/bitinfodash](jdbc:postgresql://localhost:5432/bitinfodash) avec le nom d'utilisateur `bitinfodash` et le mot de passe `bitinfodash`.
 
-6. **Arrêt de l'Application**
+2. **Option 2 - Utiliser une Base de Données PostgreSQL Locale (Sans Docker) :**
 
-    - Pour arrêter l'application, utilisez la commande suivante :
+    - Si vous avez déjà une base de données PostgreSQL locale, ouvrez le fichier `src/main/resources/application-dev.yml` et mettez à jour les paramètres de connexion en fonction de votre configuration locale.
 
-        ```bash
-        docker-compose down
-        ```
+    - Assurez-vous que la base de données existe et est accessible.
+
+3. Ensuite, suivez les étapes pour démarrer le backend et le frontend selon les sections "Backend : Exécution" et "Frontend : Exécution" de ce guide.
+
+Remarque : Si vous utilisez l'Option 2, assurez-vous que la base de données est configurée correctement avant de démarrer l'application.
+
+
+
+  ### Backend : Exécution
+
+1. Allez dans le dossier `backend`.
+    
+2. Exécutez la commande suivante :
+
+    ```bash
+    ./mvnw
+    ```
+
+   ou sur Windows :
+
+    ```bash
+    mvnw.cmd
+    ```
+
+L'application backend sera démarrée et sera accessible à l'adresse [http://localhost:8080](http://localhost:8080).
+
+
+### Frontend : Exécution
+
+1. Allez dans le dossier `frontend`.
+
+2. Assurez-vous que vous avez [Node.js](https://nodejs.org/) installé sur votre machine.
+
+3. Exécutez la commande suivante pour installer Angular CLI (Command-Line Interface) :
+
+    ```bash
+    npm install -g @angular/cli
+    ```
+
+   Cette étape nécessite une connexion Internet, car elle téléchargera et installera les packages nécessaires.
+
+4. Une fois l'installation terminée, exécutez la commande suivante pour installer les dépendances du projet :
+
+    ```bash
+    npm install
+    ```
+
+5. Exécutez la commande suivante pour démarrer l'application Angular :
+
+    ```bash
+    ng serve
+    ```
+
+L'application frontend sera démarrée et sera accessible à l'adresse [http://localhost:4200](http://localhost:4200).
+
 
 Félicitations ! Vous avez maintenant BitInfoDash en cours d'exécution localement. N'hésitez pas à explorer les fonctionnalités et à contribuer au projet.
 
