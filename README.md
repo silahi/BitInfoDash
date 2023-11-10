@@ -51,12 +51,7 @@ Le projet BitInfoDash est organisé en deux dossiers principaux :
    
 2. **frontend** : Contient le code source du frontend, développé avec Angular.
 
-3. **docker-compose.yml** : Fichier pour déployer l'application à l'aide de Docker.
-
-4. **scripts** :
-    - **install.sh** : Script d'installation pour installer les dépendances du backend et du frontend.
-    - **configure.sh** : Script pour configurer la base de données et autres paramètres.
-    - **start.sh** : Script pour démarrer l'application localement.
+3. **docker-compose.yml** : Fichier pour pour la configuration de la base de données PostgreSQL.
 
 ## Guide d'Installation et d'Exécution
 
