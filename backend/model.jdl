@@ -1,0 +1,75 @@
+entity Users {
+  id Long @Id @GeneratedValue
+  username String @Unique
+  password String
+  email String @Unique
+  firstName String
+  lastName String
+  registrationDate Instant
+  isAdmin Boolean
+}
+
+entity BitcoinOverview {
+  id Long @Id @GeneratedValue
+  bitcoinPrice BigDecimal
+  marketCap BigDecimal
+  exchangeVolume BigDecimal
+  recentVariation BigDecimal
+  timestamp Instant
+  currency String
+}
+
+entity BlockchainAnalytics {
+  id Long @Id @GeneratedValue
+  transactionCount Integer
+  averageTransactionFee BigDecimal
+  hashrateDistribution String
+  timestamp Instant
+  difficulty BigDecimal
+  networkHashrate BigDecimal
+}
+
+entity BitcoinAddress {
+  id Long @Id @GeneratedValue
+  address String @Unique
+  balance BigDecimal 
+  label String
+}
+
+entity Transactions {
+  id Long @Id @GeneratedValue
+  amount BigDecimal
+  transactionDate Instant
+  senderAddress String
+  recipientAddress String
+}
+
+entity MarketTrends {
+  id Long @Id @GeneratedValue
+  trendName String
+  indicatorValue BigDecimal
+  timestamp Instant
+  trendType String
+}
+
+entity NetworkSecurity {
+  id Long @Id @GeneratedValue
+  alertType String
+  description String
+  timestamp Instant
+  severity String
+  resolution String
+}
+
+relationship OneToMany {
+  Users to BitcoinAddress
+}
+
+
+relationship ManyToOne {
+  Transactions to BitcoinAddress
+}
+
+
+
+
