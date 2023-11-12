@@ -11,10 +11,10 @@ entity Users {
 
 entity BitcoinOverview {
   id Long @Id @GeneratedValue
-  bitcoinPrice BigDecimal
-  marketCap BigDecimal
-  exchangeVolume BigDecimal
-  recentVariation BigDecimal
+  bitcoinPrice Double
+  marketCap Double
+  exchangeVolume Double
+  recentVariation Double
   timestamp Instant
   currency String
 }
@@ -22,23 +22,23 @@ entity BitcoinOverview {
 entity BlockchainAnalytics {
   id Long @Id @GeneratedValue
   transactionCount Integer
-  averageTransactionFee BigDecimal
+  averageTransactionFee Double
   hashrateDistribution String
   timestamp Instant
-  difficulty BigDecimal
-  networkHashrate BigDecimal
+  difficulty Double
+  networkHashrate Double
 }
 
 entity BitcoinAddress {
   id Long @Id @GeneratedValue
   address String @Unique
-  balance BigDecimal 
+  balance Double 
   label String
 }
 
 entity Transactions {
   id Long @Id @GeneratedValue
-  amount BigDecimal
+  amount Double
   transactionDate Instant
   senderAddress String
   recipientAddress String
@@ -47,7 +47,7 @@ entity Transactions {
 entity MarketTrends {
   id Long @Id @GeneratedValue
   trendName String
-  indicatorValue BigDecimal
+  indicatorValue Double
   timestamp Instant
   trendType String
 }
