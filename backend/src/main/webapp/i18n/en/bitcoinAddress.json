@@ -1,0 +1,27 @@
+{
+  "bitinfodashApp": {
+    "bitcoinAddress": {
+      "home": {
+        "title": "Bitcoin Addresses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Bitcoin Address",
+        "createOrEditLabel": "Create or edit a Bitcoin Address",
+        "notFound": "No Bitcoin Addresses found"
+      },
+      "created": "A new Bitcoin Address is created with identifier {{ param }}",
+      "updated": "A Bitcoin Address is updated with identifier {{ param }}",
+      "deleted": "A Bitcoin Address is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bitcoin Address {{ id }}?"
+      },
+      "detail": {
+        "title": "Bitcoin Address"
+      },
+      "id": "ID",
+      "address": "Address",
+      "balance": "Balance",
+      "label": "Label",
+      "transactions": "Transactions"
+    }
+  }
+}

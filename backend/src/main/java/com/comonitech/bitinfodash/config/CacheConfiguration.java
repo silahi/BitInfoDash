@@ -48,6 +48,13 @@ public class CacheConfiguration {
             createCache(cm, com.comonitech.bitinfodash.domain.User.class.getName());
             createCache(cm, com.comonitech.bitinfodash.domain.Authority.class.getName());
             createCache(cm, com.comonitech.bitinfodash.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.comonitech.bitinfodash.domain.BitcoinOverview.class.getName());
+            createCache(cm, com.comonitech.bitinfodash.domain.BlockchainAnalytics.class.getName());
+            createCache(cm, com.comonitech.bitinfodash.domain.BitcoinAddress.class.getName());
+            createCache(cm, com.comonitech.bitinfodash.domain.BitcoinAddress.class.getName() + ".transactions");
+            createCache(cm, com.comonitech.bitinfodash.domain.Transactions.class.getName());
+            createCache(cm, com.comonitech.bitinfodash.domain.MarketTrends.class.getName());
+            createCache(cm, com.comonitech.bitinfodash.domain.NetworkSecurity.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

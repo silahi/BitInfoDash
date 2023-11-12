@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="bitcoinAddress">
+      <h2 data-cy="bitcoinAddressDetailsHeading"><span jhiTranslate="bitinfodashApp.bitcoinAddress.detail.title">Bitcoin Address</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ bitcoinAddress.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.bitcoinAddress.address">Address</span></dt>
+        <dd>
+          <span>{{ bitcoinAddress.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.bitcoinAddress.balance">Balance</span></dt>
+        <dd>
+          <span>{{ bitcoinAddress.balance }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.bitcoinAddress.label">Label</span></dt>
+        <dd>
+          <span>{{ bitcoinAddress.label }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bitcoin-address', bitcoinAddress.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

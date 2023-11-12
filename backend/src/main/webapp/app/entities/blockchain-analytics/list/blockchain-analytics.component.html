@@ -1,0 +1,121 @@
+<div>
+  <h2 id="page-heading" data-cy="BlockchainAnalyticsHeading">
+    <span jhiTranslate="bitinfodashApp.blockchainAnalytics.home.title">BlockchainAnalytics</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bitinfodashApp.blockchainAnalytics.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-blockchain-analytics"
+        [routerLink]="['/blockchain-analytics/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bitinfodashApp.blockchainAnalytics.home.createLabel">Créer un nouveau Blockchain Analytics</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="blockchainAnalytics?.length === 0">
+    <span jhiTranslate="bitinfodashApp.blockchainAnalytics.home.notFound">Aucun Blockchain Analytics trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="blockchainAnalytics && blockchainAnalytics.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="transactionCount">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.blockchainAnalytics.transactionCount">Transaction Count</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="averageTransactionFee">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.blockchainAnalytics.averageTransactionFee">Average Transaction Fee</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="hashrateDistribution">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.blockchainAnalytics.hashrateDistribution">Hashrate Distribution</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="timestamp">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.blockchainAnalytics.timestamp">Timestamp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="difficulty">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.blockchainAnalytics.difficulty">Difficulty</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="networkHashrate">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.blockchainAnalytics.networkHashrate">Network Hashrate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let blockchainAnalytics of blockchainAnalytics; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/blockchain-analytics', blockchainAnalytics.id, 'view']">{{ blockchainAnalytics.id }}</a>
+          </td>
+          <td>{{ blockchainAnalytics.transactionCount }}</td>
+          <td>{{ blockchainAnalytics.averageTransactionFee }}</td>
+          <td>{{ blockchainAnalytics.hashrateDistribution }}</td>
+          <td>{{ blockchainAnalytics.timestamp | formatMediumDatetime }}</td>
+          <td>{{ blockchainAnalytics.difficulty }}</td>
+          <td>{{ blockchainAnalytics.networkHashrate }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <a
+                [routerLink]="['/blockchain-analytics', blockchainAnalytics.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </a>
+
+              <a
+                [routerLink]="['/blockchain-analytics', blockchainAnalytics.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </a>
+
+              <button type="submit" (click)="delete(blockchainAnalytics)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

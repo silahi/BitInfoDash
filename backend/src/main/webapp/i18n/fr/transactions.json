@@ -1,0 +1,28 @@
+{
+  "bitinfodashApp": {
+    "transactions": {
+      "home": {
+        "title": "Transactions",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Transactions",
+        "createOrEditLabel": "Créer ou éditer un Transactions",
+        "notFound": "Aucun Transactions trouvé"
+      },
+      "created": "Un nouveau Transactions a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Transactions avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Transactions avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Transactions {{ id }} ?"
+      },
+      "detail": {
+        "title": "Transactions"
+      },
+      "id": "ID",
+      "amount": "Amount",
+      "transactionDate": "Transaction Date",
+      "senderAddress": "Sender Address",
+      "recipientAddress": "Recipient Address",
+      "bitcoinAddress": "Bitcoin Address"
+    }
+  }
+}

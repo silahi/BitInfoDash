@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="bitcoinOverview">
+      <h2 data-cy="bitcoinOverviewDetailsHeading">
+        <span jhiTranslate="bitinfodashApp.bitcoinOverview.detail.title">Bitcoin Overview</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ bitcoinOverview.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.bitcoinOverview.bitcoinPrice">Bitcoin Price</span></dt>
+        <dd>
+          <span>{{ bitcoinOverview.bitcoinPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.bitcoinOverview.marketCap">Market Cap</span></dt>
+        <dd>
+          <span>{{ bitcoinOverview.marketCap }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.bitcoinOverview.exchangeVolume">Exchange Volume</span></dt>
+        <dd>
+          <span>{{ bitcoinOverview.exchangeVolume }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.bitcoinOverview.recentVariation">Recent Variation</span></dt>
+        <dd>
+          <span>{{ bitcoinOverview.recentVariation }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.bitcoinOverview.timestamp">Timestamp</span></dt>
+        <dd>
+          <span>{{ bitcoinOverview.timestamp | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.bitcoinOverview.currency">Currency</span></dt>
+        <dd>
+          <span>{{ bitcoinOverview.currency }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bitcoin-overview', bitcoinOverview.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

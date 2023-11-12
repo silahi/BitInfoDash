@@ -1,0 +1,27 @@
+{
+  "bitinfodashApp": {
+    "marketTrends": {
+      "home": {
+        "title": "Market Trends",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Market Trends",
+        "createOrEditLabel": "Create or edit a Market Trends",
+        "notFound": "No Market Trends found"
+      },
+      "created": "A new Market Trends is created with identifier {{ param }}",
+      "updated": "A Market Trends is updated with identifier {{ param }}",
+      "deleted": "A Market Trends is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Market Trends {{ id }}?"
+      },
+      "detail": {
+        "title": "Market Trends"
+      },
+      "id": "ID",
+      "trendName": "Trend Name",
+      "indicatorValue": "Indicator Value",
+      "timestamp": "Timestamp",
+      "trendType": "Trend Type"
+    }
+  }
+}

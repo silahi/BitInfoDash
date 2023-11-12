@@ -1,0 +1,34 @@
+{
+  "applications": "*",
+  "changelogDate": "20231110063310",
+  "entityTableName": "transactions",
+  "fields": [
+    {
+      "fieldName": "amount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "transactionDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "senderAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "recipientAddress",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Transactions",
+  "relationships": [
+    {
+      "otherEntityName": "bitcoinAddress",
+      "otherEntityRelationshipName": "transactions",
+      "relationshipName": "bitcoinAddress",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

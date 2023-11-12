@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="networkSecurity">
+      <h2 data-cy="networkSecurityDetailsHeading">
+        <span jhiTranslate="bitinfodashApp.networkSecurity.detail.title">Network Security</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ networkSecurity.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.networkSecurity.alertType">Alert Type</span></dt>
+        <dd>
+          <span>{{ networkSecurity.alertType }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.networkSecurity.description">Description</span></dt>
+        <dd>
+          <span>{{ networkSecurity.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.networkSecurity.timestamp">Timestamp</span></dt>
+        <dd>
+          <span>{{ networkSecurity.timestamp | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.networkSecurity.severity">Severity</span></dt>
+        <dd>
+          <span>{{ networkSecurity.severity }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.networkSecurity.resolution">Resolution</span></dt>
+        <dd>
+          <span>{{ networkSecurity.resolution }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/network-security', networkSecurity.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

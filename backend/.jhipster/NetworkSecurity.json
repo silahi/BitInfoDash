@@ -1,0 +1,30 @@
+{
+  "applications": "*",
+  "changelogDate": "20231110063510",
+  "entityTableName": "network_security",
+  "fields": [
+    {
+      "fieldName": "alertType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "severity",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "resolution",
+      "fieldType": "String"
+    }
+  ],
+  "name": "NetworkSecurity",
+  "relationships": [],
+  "searchEngine": "no"
+}

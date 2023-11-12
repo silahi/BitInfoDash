@@ -1,0 +1,29 @@
+{
+  "bitinfodashApp": {
+    "bitcoinOverview": {
+      "home": {
+        "title": "BitcoinOverviews",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Bitcoin Overview",
+        "createOrEditLabel": "Créer ou éditer un Bitcoin Overview",
+        "notFound": "Aucun Bitcoin Overview trouvé"
+      },
+      "created": "Un nouveau Bitcoin Overview a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Bitcoin Overview avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Bitcoin Overview avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Bitcoin Overview {{ id }} ?"
+      },
+      "detail": {
+        "title": "Bitcoin Overview"
+      },
+      "id": "ID",
+      "bitcoinPrice": "Bitcoin Price",
+      "marketCap": "Market Cap",
+      "exchangeVolume": "Exchange Volume",
+      "recentVariation": "Recent Variation",
+      "timestamp": "Timestamp",
+      "currency": "Currency"
+    }
+  }
+}

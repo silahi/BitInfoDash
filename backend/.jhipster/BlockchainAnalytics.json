@@ -1,0 +1,34 @@
+{
+  "applications": "*",
+  "changelogDate": "20231110063110",
+  "entityTableName": "blockchain_analytics",
+  "fields": [
+    {
+      "fieldName": "transactionCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "averageTransactionFee",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "hashrateDistribution",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "difficulty",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "networkHashrate",
+      "fieldType": "Double"
+    }
+  ],
+  "name": "BlockchainAnalytics",
+  "relationships": [],
+  "searchEngine": "no"
+}

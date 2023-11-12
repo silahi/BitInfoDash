@@ -1,0 +1,106 @@
+<div>
+  <h2 id="page-heading" data-cy="NetworkSecurityHeading">
+    <span jhiTranslate="bitinfodashApp.networkSecurity.home.title">NetworkSecurities</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bitinfodashApp.networkSecurity.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-network-security"
+        [routerLink]="['/network-security/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bitinfodashApp.networkSecurity.home.createLabel">Créer un nouveau Network Security</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="networkSecurities?.length === 0">
+    <span jhiTranslate="bitinfodashApp.networkSecurity.home.notFound">Aucun Network Security trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="networkSecurities && networkSecurities.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="alertType">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.networkSecurity.alertType">Alert Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.networkSecurity.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="timestamp">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.networkSecurity.timestamp">Timestamp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="severity">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.networkSecurity.severity">Severity</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="resolution">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.networkSecurity.resolution">Resolution</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let networkSecurity of networkSecurities; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/network-security', networkSecurity.id, 'view']">{{ networkSecurity.id }}</a>
+          </td>
+          <td>{{ networkSecurity.alertType }}</td>
+          <td>{{ networkSecurity.description }}</td>
+          <td>{{ networkSecurity.timestamp | formatMediumDatetime }}</td>
+          <td>{{ networkSecurity.severity }}</td>
+          <td>{{ networkSecurity.resolution }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <a [routerLink]="['/network-security', networkSecurity.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </a>
+
+              <a [routerLink]="['/network-security', networkSecurity.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </a>
+
+              <button type="submit" (click)="delete(networkSecurity)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

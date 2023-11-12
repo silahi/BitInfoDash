@@ -1,0 +1,29 @@
+{
+  "bitinfodashApp": {
+    "blockchainAnalytics": {
+      "home": {
+        "title": "Blockchain Analytics",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Blockchain Analytics",
+        "createOrEditLabel": "Create or edit a Blockchain Analytics",
+        "notFound": "No Blockchain Analytics found"
+      },
+      "created": "A new Blockchain Analytics is created with identifier {{ param }}",
+      "updated": "A Blockchain Analytics is updated with identifier {{ param }}",
+      "deleted": "A Blockchain Analytics is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Blockchain Analytics {{ id }}?"
+      },
+      "detail": {
+        "title": "Blockchain Analytics"
+      },
+      "id": "ID",
+      "transactionCount": "Transaction Count",
+      "averageTransactionFee": "Average Transaction Fee",
+      "hashrateDistribution": "Hashrate Distribution",
+      "timestamp": "Timestamp",
+      "difficulty": "Difficulty",
+      "networkHashrate": "Network Hashrate"
+    }
+  }
+}

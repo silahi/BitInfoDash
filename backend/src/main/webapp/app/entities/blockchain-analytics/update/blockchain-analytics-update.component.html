@@ -1,0 +1,124 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-blockchain-analytics-heading"
+        data-cy="BlockchainAnalyticsCreateUpdateHeading"
+        jhiTranslate="bitinfodashApp.blockchainAnalytics.home.createOrEditLabel"
+      >
+        Créer ou éditer un Blockchain Analytics
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="bitinfodashApp.blockchainAnalytics.transactionCount" for="field_transactionCount"
+            >Transaction Count</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="transactionCount"
+            id="field_transactionCount"
+            data-cy="transactionCount"
+            formControlName="transactionCount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="bitinfodashApp.blockchainAnalytics.averageTransactionFee"
+            for="field_averageTransactionFee"
+            >Average Transaction Fee</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="averageTransactionFee"
+            id="field_averageTransactionFee"
+            data-cy="averageTransactionFee"
+            formControlName="averageTransactionFee"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="bitinfodashApp.blockchainAnalytics.hashrateDistribution" for="field_hashrateDistribution"
+            >Hashrate Distribution</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="hashrateDistribution"
+            id="field_hashrateDistribution"
+            data-cy="hashrateDistribution"
+            formControlName="hashrateDistribution"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="bitinfodashApp.blockchainAnalytics.timestamp" for="field_timestamp">Timestamp</label>
+          <div class="d-flex">
+            <input
+              id="field_timestamp"
+              data-cy="timestamp"
+              type="datetime-local"
+              class="form-control"
+              name="timestamp"
+              formControlName="timestamp"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="bitinfodashApp.blockchainAnalytics.difficulty" for="field_difficulty">Difficulty</label>
+          <input
+            type="number"
+            class="form-control"
+            name="difficulty"
+            id="field_difficulty"
+            data-cy="difficulty"
+            formControlName="difficulty"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="bitinfodashApp.blockchainAnalytics.networkHashrate" for="field_networkHashrate"
+            >Network Hashrate</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="networkHashrate"
+            id="field_networkHashrate"
+            data-cy="networkHashrate"
+            formControlName="networkHashrate"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

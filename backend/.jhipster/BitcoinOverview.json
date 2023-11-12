@@ -1,0 +1,34 @@
+{
+  "applications": "*",
+  "changelogDate": "20231110063010",
+  "entityTableName": "bitcoin_overview",
+  "fields": [
+    {
+      "fieldName": "bitcoinPrice",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "marketCap",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "exchangeVolume",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "recentVariation",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "currency",
+      "fieldType": "String"
+    }
+  ],
+  "name": "BitcoinOverview",
+  "relationships": [],
+  "searchEngine": "no"
+}

@@ -1,0 +1,99 @@
+<div>
+  <h2 id="page-heading" data-cy="MarketTrendsHeading">
+    <span jhiTranslate="bitinfodashApp.marketTrends.home.title">MarketTrends</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bitinfodashApp.marketTrends.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-market-trends"
+        [routerLink]="['/market-trends/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bitinfodashApp.marketTrends.home.createLabel">Créer un nouveau Market Trends</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="marketTrends?.length === 0">
+    <span jhiTranslate="bitinfodashApp.marketTrends.home.notFound">Aucun Market Trends trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="marketTrends && marketTrends.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="trendName">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.marketTrends.trendName">Trend Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="indicatorValue">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.marketTrends.indicatorValue">Indicator Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="timestamp">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.marketTrends.timestamp">Timestamp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="trendType">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.marketTrends.trendType">Trend Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let marketTrends of marketTrends; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/market-trends', marketTrends.id, 'view']">{{ marketTrends.id }}</a>
+          </td>
+          <td>{{ marketTrends.trendName }}</td>
+          <td>{{ marketTrends.indicatorValue }}</td>
+          <td>{{ marketTrends.timestamp | formatMediumDatetime }}</td>
+          <td>{{ marketTrends.trendType }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <a [routerLink]="['/market-trends', marketTrends.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </a>
+
+              <a [routerLink]="['/market-trends', marketTrends.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </a>
+
+              <button type="submit" (click)="delete(marketTrends)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

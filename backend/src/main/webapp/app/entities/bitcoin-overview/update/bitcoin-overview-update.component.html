@@ -1,0 +1,105 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-bitcoin-overview-heading"
+        data-cy="BitcoinOverviewCreateUpdateHeading"
+        jhiTranslate="bitinfodashApp.bitcoinOverview.home.createOrEditLabel"
+      >
+        Créer ou éditer un Bitcoin Overview
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="bitinfodashApp.bitcoinOverview.bitcoinPrice" for="field_bitcoinPrice"
+            >Bitcoin Price</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="bitcoinPrice"
+            id="field_bitcoinPrice"
+            data-cy="bitcoinPrice"
+            formControlName="bitcoinPrice"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="bitinfodashApp.bitcoinOverview.marketCap" for="field_marketCap">Market Cap</label>
+          <input type="number" class="form-control" name="marketCap" id="field_marketCap" data-cy="marketCap" formControlName="marketCap" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="bitinfodashApp.bitcoinOverview.exchangeVolume" for="field_exchangeVolume"
+            >Exchange Volume</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="exchangeVolume"
+            id="field_exchangeVolume"
+            data-cy="exchangeVolume"
+            formControlName="exchangeVolume"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="bitinfodashApp.bitcoinOverview.recentVariation" for="field_recentVariation"
+            >Recent Variation</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="recentVariation"
+            id="field_recentVariation"
+            data-cy="recentVariation"
+            formControlName="recentVariation"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="bitinfodashApp.bitcoinOverview.timestamp" for="field_timestamp">Timestamp</label>
+          <div class="d-flex">
+            <input
+              id="field_timestamp"
+              data-cy="timestamp"
+              type="datetime-local"
+              class="form-control"
+              name="timestamp"
+              formControlName="timestamp"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="bitinfodashApp.bitcoinOverview.currency" for="field_currency">Currency</label>
+          <input type="text" class="form-control" name="currency" id="field_currency" data-cy="currency" formControlName="currency" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
