@@ -1,16 +1,4 @@
-entity Users {
-  id Long @Id @GeneratedValue
-  username String @Unique
-  password String
-  email String @Unique
-  firstName String
-  lastName String
-  registrationDate Instant
-  isAdmin Boolean
-}
-
-entity BitcoinOverview {
-  id Long @Id @GeneratedValue
+ entity BitcoinOverview {
   bitcoinPrice Double
   marketCap Double
   exchangeVolume Double
@@ -20,7 +8,6 @@ entity BitcoinOverview {
 }
 
 entity BlockchainAnalytics {
-  id Long @Id @GeneratedValue
   transactionCount Integer
   averageTransactionFee Double
   hashrateDistribution String
@@ -29,15 +16,13 @@ entity BlockchainAnalytics {
   networkHashrate Double
 }
 
-entity BitcoinAddress {
-  id Long @Id @GeneratedValue
+entity BitcoinAddress { 
   address String @Unique
   balance Double 
   label String
 }
 
 entity Transactions {
-  id Long @Id @GeneratedValue
   amount Double
   transactionDate Instant
   senderAddress String
