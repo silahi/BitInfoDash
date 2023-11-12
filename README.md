@@ -96,7 +96,7 @@ Assurez-vous d'avoir installé les outils suivants sur votre machine :
     - Exécutez la commande suivante pour démarrer la base de données PostgreSQL avec Docker Compose :
 
         ```bash
-        docker-compose up -d
+        docker-compose up
         ```
 
     - La base de données PostgreSQL sera maintenant accessible à l'adresse [jdbc:postgresql://localhost:5432/bitinfodash](jdbc:postgresql://localhost:5432/bitinfodash) avec le nom d'utilisateur `bitinfodash` et le mot de passe `bitinfodash`.
