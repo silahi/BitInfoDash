@@ -1,0 +1,113 @@
+<div>
+  <h2 id="page-heading" data-cy="BitcoinOverviewHeading">
+    <span jhiTranslate="bitinfodashApp.bitcoinOverview.home.title">BitcoinOverviews</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bitinfodashApp.bitcoinOverview.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-bitcoin-overview"
+        [routerLink]="['/bitcoin-overview/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bitinfodashApp.bitcoinOverview.home.createLabel">Créer un nouveau Bitcoin Overview</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="bitcoinOverviews?.length === 0">
+    <span jhiTranslate="bitinfodashApp.bitcoinOverview.home.notFound">Aucun Bitcoin Overview trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="bitcoinOverviews && bitcoinOverviews.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bitcoinPrice">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.bitcoinPrice">Bitcoin Price</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="marketCap">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.marketCap">Market Cap</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="exchangeVolume">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.exchangeVolume">Exchange Volume</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="recentVariation">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.recentVariation">Recent Variation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="timestamp">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.timestamp">Timestamp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="currency">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.currency">Currency</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bitcoinOverview of bitcoinOverviews; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/bitcoin-overview', bitcoinOverview.id, 'view']">{{ bitcoinOverview.id }}</a>
+          </td>
+          <td>{{ bitcoinOverview.bitcoinPrice }}</td>
+          <td>{{ bitcoinOverview.marketCap }}</td>
+          <td>{{ bitcoinOverview.exchangeVolume }}</td>
+          <td>{{ bitcoinOverview.recentVariation }}</td>
+          <td>{{ bitcoinOverview.timestamp | formatMediumDatetime }}</td>
+          <td>{{ bitcoinOverview.currency }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <a [routerLink]="['/bitcoin-overview', bitcoinOverview.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </a>
+
+              <a [routerLink]="['/bitcoin-overview', bitcoinOverview.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </a>
+
+              <button type="submit" (click)="delete(bitcoinOverview)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+{
+  "applications": "*",
+  "changelogDate": "20231110063410",
+  "entityTableName": "market_trends",
+  "fields": [
+    {
+      "fieldName": "trendName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "indicatorValue",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "trendType",
+      "fieldType": "String"
+    }
+  ],
+  "name": "MarketTrends",
+  "relationships": [],
+  "searchEngine": "no"
+}

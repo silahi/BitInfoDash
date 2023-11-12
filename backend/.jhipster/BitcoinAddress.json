@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20231110063210",
+  "entityTableName": "bitcoin_address",
+  "fields": [
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "balance",
+      "fieldType": "Double",
+      "options": {
+        "unique": true
+      }
+    },
+    {
+      "fieldName": "label",
+      "fieldType": "String"
+    }
+  ],
+  "name": "BitcoinAddress",
+  "relationships": [
+    {
+      "otherEntityName": "transactions",
+      "otherEntityRelationshipName": "bitcoinAddress",
+      "relationshipName": "transactions",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

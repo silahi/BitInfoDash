@@ -1,0 +1,28 @@
+{
+  "bitinfodashApp": {
+    "networkSecurity": {
+      "home": {
+        "title": "Network Securities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Network Security",
+        "createOrEditLabel": "Create or edit a Network Security",
+        "notFound": "No Network Securities found"
+      },
+      "created": "A new Network Security is created with identifier {{ param }}",
+      "updated": "A Network Security is updated with identifier {{ param }}",
+      "deleted": "A Network Security is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Network Security {{ id }}?"
+      },
+      "detail": {
+        "title": "Network Security"
+      },
+      "id": "ID",
+      "alertType": "Alert Type",
+      "description": "Description",
+      "timestamp": "Timestamp",
+      "severity": "Severity",
+      "resolution": "Resolution"
+    }
+  }
+}

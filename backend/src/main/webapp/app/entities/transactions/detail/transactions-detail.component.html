@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="transactions">
+      <h2 data-cy="transactionsDetailsHeading"><span jhiTranslate="bitinfodashApp.transactions.detail.title">Transactions</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ transactions.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.transactions.amount">Amount</span></dt>
+        <dd>
+          <span>{{ transactions.amount }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.transactions.transactionDate">Transaction Date</span></dt>
+        <dd>
+          <span>{{ transactions.transactionDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.transactions.senderAddress">Sender Address</span></dt>
+        <dd>
+          <span>{{ transactions.senderAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.transactions.recipientAddress">Recipient Address</span></dt>
+        <dd>
+          <span>{{ transactions.recipientAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.transactions.bitcoinAddress">Bitcoin Address</span></dt>
+        <dd>
+          <div *ngIf="transactions.bitcoinAddress">
+            <a [routerLink]="['/bitcoin-address', transactions.bitcoinAddress.id, 'view']">{{ transactions.bitcoinAddress.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/transactions', transactions.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

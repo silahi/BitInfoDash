@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="blockchainAnalytics">
+      <h2 data-cy="blockchainAnalyticsDetailsHeading">
+        <span jhiTranslate="bitinfodashApp.blockchainAnalytics.detail.title">Blockchain Analytics</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ blockchainAnalytics.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.blockchainAnalytics.transactionCount">Transaction Count</span></dt>
+        <dd>
+          <span>{{ blockchainAnalytics.transactionCount }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.blockchainAnalytics.averageTransactionFee">Average Transaction Fee</span></dt>
+        <dd>
+          <span>{{ blockchainAnalytics.averageTransactionFee }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.blockchainAnalytics.hashrateDistribution">Hashrate Distribution</span></dt>
+        <dd>
+          <span>{{ blockchainAnalytics.hashrateDistribution }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.blockchainAnalytics.timestamp">Timestamp</span></dt>
+        <dd>
+          <span>{{ blockchainAnalytics.timestamp | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.blockchainAnalytics.difficulty">Difficulty</span></dt>
+        <dd>
+          <span>{{ blockchainAnalytics.difficulty }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.blockchainAnalytics.networkHashrate">Network Hashrate</span></dt>
+        <dd>
+          <span>{{ blockchainAnalytics.networkHashrate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/blockchain-analytics', blockchainAnalytics.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>
