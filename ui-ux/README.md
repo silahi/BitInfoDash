@@ -72,3 +72,29 @@ La page de Suivi des Adresses offre aux utilisateurs la possibilité de gérer e
 - **Filtres Temporels :** Des filtres permettront aux utilisateurs de visualiser l'évolution du solde sur des périodes spécifiques.
 
 ---
+### Tendances du Marché
+
+![Wireframe Tendances du Marché](Tendances%20du%20Marché.png)
+
+La page des Tendances du Marché a pour objectif d'offrir aux utilisateurs une vision claire de l'évolution du marché Bitcoin. Voici une description détaillée des graphiques prévus pour cette section :
+
+#### Graphique de Prix du Bitcoin (Chandeliers Japonais) :
+
+- **Évolution Quotidienne :** Utilisation de chandeliers japonais pour représenter l'évolution quotidienne du prix du Bitcoin.
+- **Ligne de Tendance/Moyenne Mobile :** Ajout d'une ligne de tendance ou d'une moyenne mobile pour indiquer la direction générale du marché.
+
+- **Volume d'Échange Quotidien :** Présentation du volume d'échange quotidien à l'aide d'histogrammes.
+- **Annotation des Événements Majeurs :** Possibilité d'annoter les événements majeurs pour montrer leur impact sur le volume.
+
+#### Graphique de Capitalisation Boursière (Graphique en Courbes) :
+
+- **Capitalisation Boursière Totale :** Graphique en courbes illustrant la capitalisation boursière totale au fil des jours.
+- **Événements Marquants :** Mise en évidence d'événements marquants pour aider les utilisateurs à comprendre les fluctuations du marché.
+
+
+#### Graphique d'Événements Récents (Lignes ou Diagramme en Barres) :
+
+- **Événements Clés :** Affichage des événements clés sous forme de barres verticales sur une échelle de temps.
+- **Corrélation Rapide :** Facilite la corrélation rapide entre les événements et les changements de prix ou de volume.
+---
+
