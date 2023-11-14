@@ -49,3 +49,26 @@ La page d'Analyse de la Blockchain vise à fournir des informations détaillées
 - **Infobulles :** Des infobulles seront ajoutées pour fournir des détails contextuels lorsque l'utilisateur survole certaines parties des graphiques.
 
 ---
+
+### Suivi des Adresses
+
+![Wireframe Suivi des Adresses](Wireframe%20Suivi%20des%20Adresses.png)
+
+La page de Suivi des Adresses offre aux utilisateurs la possibilité de gérer et de suivre des adresses Bitcoin spécifiques. Voici une description détaillée des fonctionnalités prévues pour cette section :
+
+#### Gestion des Adresses :
+
+- **Ajout d'Adresses :** Interface permettant aux utilisateurs d'ajouter de nouvelles adresses Bitcoin à surveiller.
+- **Liste d'Adresses :** Affiche la liste des adresses Bitcoin ajoutées par l'utilisateur.
+
+#### Transactions Chronologiques :
+
+- **Affichage Chronologique :** Les transactions associées à chaque adresse sont présentées dans un ordre chronologique pour une meilleure compréhension.
+- **Détails des Transactions :** Les détails de chaque transaction, tels que les montants, les destinataires, etc., sont clairement indiqués.
+
+#### Graphique d'Évolution du Solde :
+
+- **Graphe Temporel :** Présentation graphique de l'évolution du solde de chaque adresse au fil du temps.
+- **Filtres Temporels :** Des filtres permettront aux utilisateurs de visualiser l'évolution du solde sur des périodes spécifiques.
+
+---
