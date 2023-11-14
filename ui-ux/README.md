@@ -6,7 +6,7 @@ Ce dossier contient les wireframes et les maquettes pour l'interface utilisateur
 
 ### Page d'Accueil
 
-![Wireframe Accueil](Wireframe-Accueil.png)
+![Wireframe Accueil](Wireframe-Accueil_v2.png)
 
 La page d'accueil de BitInfoDash est conçue pour fournir une expérience utilisateur claire et intuitive. Voici les éléments clés de la page :
 
