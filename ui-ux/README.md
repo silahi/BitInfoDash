@@ -97,4 +97,19 @@ La page des Tendances du Marché a pour objectif d'offrir aux utilisateurs une v
 - **Événements Clés :** Affichage des événements clés sous forme de barres verticales sur une échelle de temps.
 - **Corrélation Rapide :** Facilite la corrélation rapide entre les événements et les changements de prix ou de volume.
 ---
+### Sécurité du Réseau
+
+![Wireframe Sécurité du Réseau](Sécurité%20du%20Réseau.png)
+
+La page de Sécurité du Réseau est conçue pour informer les utilisateurs sur les aspects liés à la sécurité du réseau Bitcoin. Voici une description des éléments clés de cette section :
+
+#### Panneau d'Alerte avec Notifications en Temps Réel :
+
+- **Alertes en Temps Réel :** Un panneau dédié affiche des alertes en temps réel concernant toute activité suspecte ou des vulnérabilités détectées sur le réseau Bitcoin.
+- **Notifications :** Les utilisateurs recevront des notifications instantanées pour rester informés des derniers développements en matière de sécurité.
+
+#### Liens vers des Ressources Éducatives sur la Sécurité Bitcoin :
+
+- **Ressources Éducatives :** Des liens vers des ressources éducatives sur la sécurité Bitcoin sont fournis pour permettre aux utilisateurs d'approfondir leurs connaissances.
+- **Guides de Sécurité :** Des guides pratiques sur les bonnes pratiques de sécurité dans l'écosystème Bitcoin.
 
