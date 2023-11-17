@@ -149,5 +149,16 @@
       "not.image": "Le fichier doit être une image et non du type \"{{ fileType }}\""
     }
   },
-  "footer": "Ceci est votre pied de page"
+  "footer": {
+    "contact": "Nous Contacter",
+    "email": "Email",
+    "phone": "Téléphone",
+    "follow": "Suivez-nous",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "copyright": "&copy;",
+    "year": "2023",
+    "allRightsReserved": "Tous droits réservés."
+  }
 }
