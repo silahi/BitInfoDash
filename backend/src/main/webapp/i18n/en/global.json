@@ -149,5 +149,16 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "This is your footer"
+  "footer": {
+    "contact": "Contact Us",
+    "email": "Email",
+    "phone": "Phone",
+    "follow": "Follow Us",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "copyright": "&copy;",
+    "year": "2023",
+    "allRightsReserved": "All rights reserved."
+  }
 }

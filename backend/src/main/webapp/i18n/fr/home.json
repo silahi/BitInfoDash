@@ -1,19 +1,20 @@
 {
   "home": {
-    "title": "Bienvenue, Java Hipster !",
-    "subtitle": "Ceci est votre page d'accueil",
+    "title": "Bienvenue sur BitInfoDash !",
+    "subtitle": "Votre tableau de bord interactif pour l'écosystème Bitcoin en temps réel.",
     "logged": {
-      "message": "Vous êtes connecté en tant que \"{{username}}\"."
+      "message": "Vous êtes connecté en tant qu'utilisateur \"{{username}}\"."
     },
-    "question": "Si vous avez des questions à propos de JHipster :",
+    "question": "Si vous avez des questions sur BitInfoDash ou Bitcoin :",
     "link": {
-      "homepage": "Page d'accueil de JHipster",
-      "stackoverflow": "JHipster sur Stack Overflow",
-      "bugtracker": "JHipster bug tracker",
-      "chat": "JHipster public chat room",
-      "follow": "Suivez @jhipster sur Twitter"
+      "homepage": "Page d'accueil de BitInfoDash",
+      "bugtracker": "Suivi des bugs BitInfoDash",
+      "register": {
+        "noaccount": "Vous n'avez pas encore de compte ?",
+        "link": "Créer un compte"
+      }
     },
-    "like": "Si vous aimez JHipster, donnez nous une étoile sur",
-    "github": "GitHub "
+    "like": "Si vous aimez BitInfoDash, n'oubliez pas de nous donner une étoile sur",
+    "github": "GitHub"
   }
 }
