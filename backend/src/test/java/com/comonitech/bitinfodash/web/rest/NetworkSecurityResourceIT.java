@@ -295,7 +295,7 @@ class NetworkSecurityResourceIT {
         NetworkSecurity partialUpdatedNetworkSecurity = new NetworkSecurity();
         partialUpdatedNetworkSecurity.setId(networkSecurity.getId());
 
-        partialUpdatedNetworkSecurity.severity(UPDATED_SEVERITY).resolution(UPDATED_RESOLUTION);
+        partialUpdatedNetworkSecurity.alertType(UPDATED_ALERT_TYPE);
 
         restNetworkSecurityMockMvc
             .perform(
@@ -309,11 +309,11 @@ class NetworkSecurityResourceIT {
         List<NetworkSecurity> networkSecurityList = networkSecurityRepository.findAll();
         assertThat(networkSecurityList).hasSize(databaseSizeBeforeUpdate);
         NetworkSecurity testNetworkSecurity = networkSecurityList.get(networkSecurityList.size() - 1);
-        assertThat(testNetworkSecurity.getAlertType()).isEqualTo(DEFAULT_ALERT_TYPE);
+        assertThat(testNetworkSecurity.getAlertType()).isEqualTo(UPDATED_ALERT_TYPE);
         assertThat(testNetworkSecurity.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testNetworkSecurity.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
-        assertThat(testNetworkSecurity.getSeverity()).isEqualTo(UPDATED_SEVERITY);
-        assertThat(testNetworkSecurity.getResolution()).isEqualTo(UPDATED_RESOLUTION);
+        assertThat(testNetworkSecurity.getSeverity()).isEqualTo(DEFAULT_SEVERITY);
+        assertThat(testNetworkSecurity.getResolution()).isEqualTo(DEFAULT_RESOLUTION);
     }
 
     @Test

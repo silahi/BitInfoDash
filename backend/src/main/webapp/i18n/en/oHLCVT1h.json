@@ -1,0 +1,30 @@
+{
+  "bitinfodashApp": {
+    "oHLCVT1h": {
+      "home": {
+        "title": "OHLCVT 1 Hs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new OHLCVT 1 H",
+        "createOrEditLabel": "Create or edit a OHLCVT 1 H",
+        "notFound": "No OHLCVT 1 Hs found"
+      },
+      "created": "A new OHLCVT 1 H is created with identifier {{ param }}",
+      "updated": "A OHLCVT 1 H is updated with identifier {{ param }}",
+      "deleted": "A OHLCVT 1 H is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete OHLCVT 1 H {{ id }}?"
+      },
+      "detail": {
+        "title": "OHLCVT 1 H"
+      },
+      "id": "ID",
+      "timestamp": "Timestamp",
+      "open": "Open",
+      "high": "High",
+      "low": "Low",
+      "close": "Close",
+      "volume": "Volume",
+      "trades": "Trades"
+    }
+  }
+}

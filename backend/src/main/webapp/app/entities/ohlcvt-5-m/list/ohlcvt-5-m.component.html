@@ -1,0 +1,120 @@
+<div>
+  <h2 id="page-heading" data-cy="OHLCVT5mHeading">
+    <span jhiTranslate="bitinfodashApp.oHLCVT5m.home.title">OHLCVT5ms</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="bitinfodashApp.oHLCVT5m.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-ohlcvt-5-m"
+        [routerLink]="['/ohlcvt-5-m/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bitinfodashApp.oHLCVT5m.home.createLabel">Créer un nouveau OHLCVT 5 M</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="oHLCVT5ms?.length === 0">
+    <span jhiTranslate="bitinfodashApp.oHLCVT5m.home.notFound">Aucun OHLCVT 5 M trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="oHLCVT5ms && oHLCVT5ms.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="timestamp">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.oHLCVT5m.timestamp">Timestamp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="open">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.oHLCVT5m.open">Open</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="high">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.oHLCVT5m.high">High</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="low">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.oHLCVT5m.low">Low</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="close">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.oHLCVT5m.close">Close</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="volume">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.oHLCVT5m.volume">Volume</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="trades">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.oHLCVT5m.trades">Trades</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let oHLCVT5m of oHLCVT5ms; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/ohlcvt-5-m', oHLCVT5m.id, 'view']">{{ oHLCVT5m.id }}</a>
+          </td>
+          <td>{{ oHLCVT5m.timestamp | formatMediumDatetime }}</td>
+          <td>{{ oHLCVT5m.open }}</td>
+          <td>{{ oHLCVT5m.high }}</td>
+          <td>{{ oHLCVT5m.low }}</td>
+          <td>{{ oHLCVT5m.close }}</td>
+          <td>{{ oHLCVT5m.volume }}</td>
+          <td>{{ oHLCVT5m.trades }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <a [routerLink]="['/ohlcvt-5-m', oHLCVT5m.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </a>
+
+              <a [routerLink]="['/ohlcvt-5-m', oHLCVT5m.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </a>
+
+              <button type="submit" (click)="delete(oHLCVT5m)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -157,18 +157,18 @@ describe('MarketTrends e2e test', () => {
     });
 
     it('should create an instance of MarketTrends', () => {
-      cy.get(`[data-cy="trendName"]`).type('au-dessus au-dessus si bien que');
-      cy.get(`[data-cy="trendName"]`).should('have.value', 'au-dessus au-dessus si bien que');
+      cy.get(`[data-cy="trendName"]`).type('insipide hi aventurer');
+      cy.get(`[data-cy="trendName"]`).should('have.value', 'insipide hi aventurer');
 
-      cy.get(`[data-cy="indicatorValue"]`).type('11969.94');
-      cy.get(`[data-cy="indicatorValue"]`).should('have.value', '11969.94');
+      cy.get(`[data-cy="indicatorValue"]`).type('16179.91');
+      cy.get(`[data-cy="indicatorValue"]`).should('have.value', '16179.91');
 
-      cy.get(`[data-cy="timestamp"]`).type('2023-11-10T03:49');
+      cy.get(`[data-cy="timestamp"]`).type('2023-11-09T14:11');
       cy.get(`[data-cy="timestamp"]`).blur();
-      cy.get(`[data-cy="timestamp"]`).should('have.value', '2023-11-10T03:49');
+      cy.get(`[data-cy="timestamp"]`).should('have.value', '2023-11-09T14:11');
 
-      cy.get(`[data-cy="trendType"]`).type('commis membre à vie quand ?');
-      cy.get(`[data-cy="trendType"]`).should('have.value', 'commis membre à vie quand ?');
+      cy.get(`[data-cy="trendType"]`).type('gens détacher jamais');
+      cy.get(`[data-cy="trendType"]`).should('have.value', 'gens détacher jamais');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

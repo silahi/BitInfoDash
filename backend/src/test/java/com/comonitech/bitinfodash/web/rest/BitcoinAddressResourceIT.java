@@ -291,7 +291,7 @@ class BitcoinAddressResourceIT {
         BitcoinAddress partialUpdatedBitcoinAddress = new BitcoinAddress();
         partialUpdatedBitcoinAddress.setId(bitcoinAddress.getId());
 
-        partialUpdatedBitcoinAddress.address(UPDATED_ADDRESS).balance(UPDATED_BALANCE).label(UPDATED_LABEL);
+        partialUpdatedBitcoinAddress.address(UPDATED_ADDRESS).sent(UPDATED_SENT).received(UPDATED_RECEIVED);
 
         restBitcoinAddressMockMvc
             .perform(
@@ -306,10 +306,10 @@ class BitcoinAddressResourceIT {
         assertThat(bitcoinAddressList).hasSize(databaseSizeBeforeUpdate);
         BitcoinAddress testBitcoinAddress = bitcoinAddressList.get(bitcoinAddressList.size() - 1);
         assertThat(testBitcoinAddress.getAddress()).isEqualTo(UPDATED_ADDRESS);
-        assertThat(testBitcoinAddress.getBalance()).isEqualTo(UPDATED_BALANCE);
-        assertThat(testBitcoinAddress.getLabel()).isEqualTo(UPDATED_LABEL);
-        assertThat(testBitcoinAddress.getSent()).isEqualTo(DEFAULT_SENT);
-        assertThat(testBitcoinAddress.getReceived()).isEqualTo(DEFAULT_RECEIVED);
+        assertThat(testBitcoinAddress.getBalance()).isEqualTo(DEFAULT_BALANCE);
+        assertThat(testBitcoinAddress.getLabel()).isEqualTo(DEFAULT_LABEL);
+        assertThat(testBitcoinAddress.getSent()).isEqualTo(UPDATED_SENT);
+        assertThat(testBitcoinAddress.getReceived()).isEqualTo(UPDATED_RECEIVED);
     }
 
     @Test

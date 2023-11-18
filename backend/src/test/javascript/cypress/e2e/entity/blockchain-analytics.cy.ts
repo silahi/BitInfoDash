@@ -157,24 +157,24 @@ describe('BlockchainAnalytics e2e test', () => {
     });
 
     it('should create an instance of BlockchainAnalytics', () => {
-      cy.get(`[data-cy="transactionCount"]`).type('14589');
-      cy.get(`[data-cy="transactionCount"]`).should('have.value', '14589');
+      cy.get(`[data-cy="transactionCount"]`).type('28125');
+      cy.get(`[data-cy="transactionCount"]`).should('have.value', '28125');
 
-      cy.get(`[data-cy="averageTransactionFee"]`).type('22170.4');
-      cy.get(`[data-cy="averageTransactionFee"]`).should('have.value', '22170.4');
+      cy.get(`[data-cy="averageTransactionFee"]`).type('12114.41');
+      cy.get(`[data-cy="averageTransactionFee"]`).should('have.value', '12114.41');
 
-      cy.get(`[data-cy="hashrateDistribution"]`).type('gigantesque');
-      cy.get(`[data-cy="hashrateDistribution"]`).should('have.value', 'gigantesque');
+      cy.get(`[data-cy="hashrateDistribution"]`).type("à travers à l'encontre de affable");
+      cy.get(`[data-cy="hashrateDistribution"]`).should('have.value', "à travers à l'encontre de affable");
 
-      cy.get(`[data-cy="timestamp"]`).type('2023-11-09T22:48');
+      cy.get(`[data-cy="timestamp"]`).type('2023-11-10T03:04');
       cy.get(`[data-cy="timestamp"]`).blur();
-      cy.get(`[data-cy="timestamp"]`).should('have.value', '2023-11-09T22:48');
+      cy.get(`[data-cy="timestamp"]`).should('have.value', '2023-11-10T03:04');
 
-      cy.get(`[data-cy="difficulty"]`).type('637');
-      cy.get(`[data-cy="difficulty"]`).should('have.value', '637');
+      cy.get(`[data-cy="difficulty"]`).type('6818.08');
+      cy.get(`[data-cy="difficulty"]`).should('have.value', '6818.08');
 
-      cy.get(`[data-cy="networkHashrate"]`).type('18639.93');
-      cy.get(`[data-cy="networkHashrate"]`).should('have.value', '18639.93');
+      cy.get(`[data-cy="networkHashrate"]`).type('13883.37');
+      cy.get(`[data-cy="networkHashrate"]`).should('have.value', '13883.37');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

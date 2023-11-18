@@ -17,6 +17,12 @@
     <include file="config/liquibase/changelog/20231110063310_added_entity_Transactions.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231110063410_added_entity_MarketTrends.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20231110063510_added_entity_NetworkSecurity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231110063010_added_entity_OHLCVT1m.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231110063110_added_entity_OHLCVT5m.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231110063210_added_entity_OHLCVT15m.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231110063310_added_entity_OHLCVT1h.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231110063410_added_entity_OHLCVT12h.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231110063510_added_entity_OHLCVT1d.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20231110063310_added_entity_constraints_Transactions.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->

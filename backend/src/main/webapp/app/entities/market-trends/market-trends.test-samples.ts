@@ -3,23 +3,21 @@ import dayjs from 'dayjs/esm';
 import { IMarketTrends, NewMarketTrends } from './market-trends.model';
 
 export const sampleWithRequiredData: IMarketTrends = {
-  id: 14758,
+  id: 2456,
 };
 
 export const sampleWithPartialData: IMarketTrends = {
-  id: 6614,
-  trendName: 'aïe',
-  indicatorValue: 30971.5,
-  timestamp: dayjs('2023-11-09T16:18'),
-  trendType: 'mériter',
+  id: 30880,
+  trendName: 'pourpre peu',
+  indicatorValue: 15696.14,
 };
 
 export const sampleWithFullData: IMarketTrends = {
-  id: 20580,
-  trendName: 'jouir jusqu’à ce que puisque',
-  indicatorValue: 27987.5,
-  timestamp: dayjs('2023-11-09T21:08'),
-  trendType: 'broum',
+  id: 12022,
+  trendName: 'ouin depuis areu areu',
+  indicatorValue: 12628.36,
+  timestamp: dayjs('2023-11-10T03:37'),
+  trendType: 'lorsque dans',
 };
 
 export const sampleWithNewData: NewMarketTrends = {

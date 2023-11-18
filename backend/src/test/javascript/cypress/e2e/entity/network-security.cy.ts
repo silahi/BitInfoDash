@@ -157,21 +157,21 @@ describe('NetworkSecurity e2e test', () => {
     });
 
     it('should create an instance of NetworkSecurity', () => {
-      cy.get(`[data-cy="alertType"]`).type('considérable');
-      cy.get(`[data-cy="alertType"]`).should('have.value', 'considérable');
+      cy.get(`[data-cy="alertType"]`).type('svelte');
+      cy.get(`[data-cy="alertType"]`).should('have.value', 'svelte');
 
-      cy.get(`[data-cy="description"]`).type('un peu');
-      cy.get(`[data-cy="description"]`).should('have.value', 'un peu');
+      cy.get(`[data-cy="description"]`).type('que');
+      cy.get(`[data-cy="description"]`).should('have.value', 'que');
 
-      cy.get(`[data-cy="timestamp"]`).type('2023-11-09T07:36');
+      cy.get(`[data-cy="timestamp"]`).type('2023-11-09T17:21');
       cy.get(`[data-cy="timestamp"]`).blur();
-      cy.get(`[data-cy="timestamp"]`).should('have.value', '2023-11-09T07:36');
+      cy.get(`[data-cy="timestamp"]`).should('have.value', '2023-11-09T17:21');
 
-      cy.get(`[data-cy="severity"]`).type('cot cot');
-      cy.get(`[data-cy="severity"]`).should('have.value', 'cot cot');
+      cy.get(`[data-cy="severity"]`).type('smack suivant membre à vie');
+      cy.get(`[data-cy="severity"]`).should('have.value', 'smack suivant membre à vie');
 
-      cy.get(`[data-cy="resolution"]`).type('athlète');
-      cy.get(`[data-cy="resolution"]`).should('have.value', 'athlète');
+      cy.get(`[data-cy="resolution"]`).type('ferme');
+      cy.get(`[data-cy="resolution"]`).should('have.value', 'ferme');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

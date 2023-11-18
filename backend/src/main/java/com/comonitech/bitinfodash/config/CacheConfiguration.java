@@ -55,6 +55,12 @@ public class CacheConfiguration {
             createCache(cm, com.comonitech.bitinfodash.domain.Transactions.class.getName());
             createCache(cm, com.comonitech.bitinfodash.domain.MarketTrends.class.getName());
             createCache(cm, com.comonitech.bitinfodash.domain.NetworkSecurity.class.getName());
+            createCache(cm, com.comonitech.bitinfodash.domain.OHLCVT1m.class.getName());
+            createCache(cm, com.comonitech.bitinfodash.domain.OHLCVT5m.class.getName());
+            createCache(cm, com.comonitech.bitinfodash.domain.OHLCVT15m.class.getName());
+            createCache(cm, com.comonitech.bitinfodash.domain.OHLCVT1h.class.getName());
+            createCache(cm, com.comonitech.bitinfodash.domain.OHLCVT12h.class.getName());
+            createCache(cm, com.comonitech.bitinfodash.domain.OHLCVT1d.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

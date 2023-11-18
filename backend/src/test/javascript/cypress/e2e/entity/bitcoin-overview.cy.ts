@@ -157,24 +157,24 @@ describe('BitcoinOverview e2e test', () => {
     });
 
     it('should create an instance of BitcoinOverview', () => {
-      cy.get(`[data-cy="bitcoinPrice"]`).type('15170');
-      cy.get(`[data-cy="bitcoinPrice"]`).should('have.value', '15170');
+      cy.get(`[data-cy="bitcoinPrice"]`).type('16611.62');
+      cy.get(`[data-cy="bitcoinPrice"]`).should('have.value', '16611.62');
 
-      cy.get(`[data-cy="marketCap"]`).type('10782.12');
-      cy.get(`[data-cy="marketCap"]`).should('have.value', '10782.12');
+      cy.get(`[data-cy="marketCap"]`).type('13473.69');
+      cy.get(`[data-cy="marketCap"]`).should('have.value', '13473.69');
 
-      cy.get(`[data-cy="exchangeVolume"]`).type('12794.23');
-      cy.get(`[data-cy="exchangeVolume"]`).should('have.value', '12794.23');
+      cy.get(`[data-cy="exchangeVolume"]`).type('19661.54');
+      cy.get(`[data-cy="exchangeVolume"]`).should('have.value', '19661.54');
 
-      cy.get(`[data-cy="recentVariation"]`).type('11103.58');
-      cy.get(`[data-cy="recentVariation"]`).should('have.value', '11103.58');
+      cy.get(`[data-cy="recentVariation"]`).type('27144.58');
+      cy.get(`[data-cy="recentVariation"]`).should('have.value', '27144.58');
 
-      cy.get(`[data-cy="timestamp"]`).type('2023-11-10T00:49');
+      cy.get(`[data-cy="timestamp"]`).type('2023-11-10T06:17');
       cy.get(`[data-cy="timestamp"]`).blur();
-      cy.get(`[data-cy="timestamp"]`).should('have.value', '2023-11-10T00:49');
+      cy.get(`[data-cy="timestamp"]`).should('have.value', '2023-11-10T06:17');
 
-      cy.get(`[data-cy="currency"]`).type('après allonger toutefois');
-      cy.get(`[data-cy="currency"]`).should('have.value', 'après allonger toutefois');
+      cy.get(`[data-cy="currency"]`).type('jeter');
+      cy.get(`[data-cy="currency"]`).should('have.value', 'jeter');
 
       cy.get(entityCreateSaveButtonSelector).click();
 
