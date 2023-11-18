@@ -53,6 +53,7 @@ relationship ManyToOne {
 
 // entity for 1 minute interval
 entity OHLCVT1m {
+    timestamp ZonedDateTime 
     open Double
     high Double
     low Double
@@ -63,6 +64,7 @@ entity OHLCVT1m {
 
 // entity for 5 minute interval
 entity OHLCVT5m {
+    timestamp ZonedDateTime 
     open Double
     high Double
     low Double
@@ -73,6 +75,7 @@ entity OHLCVT5m {
 
 // entity for 15 minutes interval
 entity OHLCVT15m {
+    timestamp ZonedDateTime 
     open Double
     high Double
     low Double
@@ -83,6 +86,7 @@ entity OHLCVT15m {
 
 // entity for 1 hour interval
 entity OHLCVT1h {
+    timestamp ZonedDateTime 
     open Double
     high Double
     low Double
@@ -93,6 +97,7 @@ entity OHLCVT1h {
 
 // entity for 12 hours interval
 entity OHLCVT12h {
+    timestamp ZonedDateTime 
     open Double
     high Double
     low Double
@@ -103,6 +108,7 @@ entity OHLCVT12h {
 
 // entity for 1 day interval
 entity OHLCVT1d {
+    timestamp ZonedDateTime 
     open Double
     high Double
     low Double
