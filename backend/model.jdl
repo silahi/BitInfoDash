@@ -51,6 +51,64 @@ relationship ManyToOne {
   Transactions to BitcoinAddress
 }
 
+// entity for 1 minute interval
+entity OHLCVT1m {
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
 
+// entity for 5 minute interval
+entity OHLCVT5m {
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
+
+// entity for 15 minutes interval
+entity OHLCVT15m {
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
+
+// entity for 1 hour interval
+entity OHLCVT1h {
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
+
+// entity for 12 hours interval
+entity OHLCVT12h {
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
+
+// entity for 1 day interval
+entity OHLCVT1d {
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
 
 
