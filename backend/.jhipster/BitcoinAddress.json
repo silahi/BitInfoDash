@@ -17,6 +17,14 @@
     {
       "fieldName": "label",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "sent",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "received",
+      "fieldType": "Double"
     }
   ],
   "name": "BitcoinAddress",

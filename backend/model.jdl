@@ -20,6 +20,8 @@ entity BitcoinAddress {
   address String @Unique
   balance Double 
   label String
+  sent Double
+  received Double 
 }
 
 entity Transactions {

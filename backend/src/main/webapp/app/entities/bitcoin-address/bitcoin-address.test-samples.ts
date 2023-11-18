@@ -1,19 +1,23 @@
 import { IBitcoinAddress, NewBitcoinAddress } from './bitcoin-address.model';
 
 export const sampleWithRequiredData: IBitcoinAddress = {
-  id: 28777,
+  id: 18423,
 };
 
 export const sampleWithPartialData: IBitcoinAddress = {
-  id: 1165,
-  label: 'recourir effectuer moderne',
+  id: 10136,
+  address: 'boum plic',
+  balance: 12685.5,
+  sent: 21608.97,
 };
 
 export const sampleWithFullData: IBitcoinAddress = {
-  id: 6149,
-  address: 'avant que hystérique',
-  balance: 6997.41,
-  label: 'jeune',
+  id: 19961,
+  address: 'succéder',
+  balance: 23407.43,
+  label: 'adversaire incliner',
+  sent: 15789.48,
+  received: 15879.85,
 };
 
 export const sampleWithNewData: NewBitcoinAddress = {

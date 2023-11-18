@@ -23,6 +23,12 @@
             <column name="label" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="sent" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="received" type="double">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
@@ -47,6 +53,8 @@
             <column name="address" type="string"/>
             <column name="balance" type="numeric"/>
             <column name="label" type="string"/>
+            <column name="sent" type="numeric"/>
+            <column name="received" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

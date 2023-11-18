@@ -50,10 +50,10 @@ describe('Transactions Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call BitcoinAddress query and add missing value', () => {
       const transactions: ITransactions = { id: 456 };
-      const bitcoinAddress: IBitcoinAddress = { id: 15880 };
+      const bitcoinAddress: IBitcoinAddress = { id: 23080 };
       transactions.bitcoinAddress = bitcoinAddress;
 
-      const bitcoinAddressCollection: IBitcoinAddress[] = [{ id: 23080 }];
+      const bitcoinAddressCollection: IBitcoinAddress[] = [{ id: 7044 }];
       jest.spyOn(bitcoinAddressService, 'query').mockReturnValue(of(new HttpResponse({ body: bitcoinAddressCollection })));
       const additionalBitcoinAddresses = [bitcoinAddress];
       const expectedCollection: IBitcoinAddress[] = [...additionalBitcoinAddresses, ...bitcoinAddressCollection];
@@ -72,7 +72,7 @@ describe('Transactions Management Update Component', () => {
 
     it('Should update editForm', () => {
       const transactions: ITransactions = { id: 456 };
-      const bitcoinAddress: IBitcoinAddress = { id: 7044 };
+      const bitcoinAddress: IBitcoinAddress = { id: 45 };
       transactions.bitcoinAddress = bitcoinAddress;
 
       activatedRoute.data = of({ transactions });

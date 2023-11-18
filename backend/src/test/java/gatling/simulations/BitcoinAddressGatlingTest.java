@@ -74,7 +74,17 @@ public class BitcoinAddressGatlingTest extends Simulation {
                     http("Create new bitcoinAddress")
                         .post("/api/bitcoin-addresses")
                         .headers(headers_http_authenticated)
-                        .body(StringBody("{" + "\"address\": \"SAMPLE_TEXT\"" + ", \"balance\": 0" + ", \"label\": \"SAMPLE_TEXT\"" + "}"))
+                        .body(
+                            StringBody(
+                                "{" +
+                                "\"address\": \"SAMPLE_TEXT\"" +
+                                ", \"balance\": 0" +
+                                ", \"label\": \"SAMPLE_TEXT\"" +
+                                ", \"sent\": 0" +
+                                ", \"received\": 0" +
+                                "}"
+                            )
+                        )
                         .asJson()
                         .check(status().is(201))
                         .check(headerRegex("Location", "(.*)").saveAs("new_bitcoinAddress_url"))

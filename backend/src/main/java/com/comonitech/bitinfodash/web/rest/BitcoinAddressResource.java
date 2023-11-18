@@ -132,6 +132,12 @@ public class BitcoinAddressResource {
                 if (bitcoinAddress.getLabel() != null) {
                     existingBitcoinAddress.setLabel(bitcoinAddress.getLabel());
                 }
+                if (bitcoinAddress.getSent() != null) {
+                    existingBitcoinAddress.setSent(bitcoinAddress.getSent());
+                }
+                if (bitcoinAddress.getReceived() != null) {
+                    existingBitcoinAddress.setReceived(bitcoinAddress.getReceived());
+                }
 
                 return existingBitcoinAddress;
             })
