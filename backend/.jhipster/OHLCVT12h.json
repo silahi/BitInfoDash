@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20231110063410",
+  "entityTableName": "ohlcvt_12_h",
+  "fields": [
+    {
+      "fieldName": "timestamp",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "open",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "high",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "low",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "close",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "volume",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "trades",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "OHLCVT12h",
+  "relationships": [],
+  "searchEngine": "no"
+}

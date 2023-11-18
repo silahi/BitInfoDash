@@ -20,6 +20,8 @@ entity BitcoinAddress {
   address String @Unique
   balance Double 
   label String
+  sent Double
+  received Double 
 }
 
 entity Transactions {
@@ -49,6 +51,70 @@ relationship ManyToOne {
   Transactions to BitcoinAddress
 }
 
+// entity for 1 minute interval
+entity OHLCVT1m {
+    timestamp ZonedDateTime 
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
 
+// entity for 5 minute interval
+entity OHLCVT5m {
+    timestamp ZonedDateTime 
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
+
+// entity for 15 minutes interval
+entity OHLCVT15m {
+    timestamp ZonedDateTime 
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
+
+// entity for 1 hour interval
+entity OHLCVT1h {
+    timestamp ZonedDateTime 
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
+
+// entity for 12 hours interval
+entity OHLCVT12h {
+    timestamp ZonedDateTime 
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
+
+// entity for 1 day interval
+entity OHLCVT1d {
+    timestamp ZonedDateTime 
+    open Double
+    high Double
+    low Double
+    close Double
+    volume Long
+    trades Integer
+}
 
 

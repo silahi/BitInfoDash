@@ -157,18 +157,18 @@ describe('Transactions e2e test', () => {
     });
 
     it('should create an instance of Transactions', () => {
-      cy.get(`[data-cy="amount"]`).type('9422.5');
-      cy.get(`[data-cy="amount"]`).should('have.value', '9422.5');
+      cy.get(`[data-cy="amount"]`).type('6078.39');
+      cy.get(`[data-cy="amount"]`).should('have.value', '6078.39');
 
-      cy.get(`[data-cy="transactionDate"]`).type('2023-11-09T18:59');
+      cy.get(`[data-cy="transactionDate"]`).type('2023-11-09T08:22');
       cy.get(`[data-cy="transactionDate"]`).blur();
-      cy.get(`[data-cy="transactionDate"]`).should('have.value', '2023-11-09T18:59');
+      cy.get(`[data-cy="transactionDate"]`).should('have.value', '2023-11-09T08:22');
 
-      cy.get(`[data-cy="senderAddress"]`).type('par si');
-      cy.get(`[data-cy="senderAddress"]`).should('have.value', 'par si');
+      cy.get(`[data-cy="senderAddress"]`).type('communauté étudiante');
+      cy.get(`[data-cy="senderAddress"]`).should('have.value', 'communauté étudiante');
 
-      cy.get(`[data-cy="recipientAddress"]`).type('énergique tant que vlan');
-      cy.get(`[data-cy="recipientAddress"]`).should('have.value', 'énergique tant que vlan');
+      cy.get(`[data-cy="recipientAddress"]`).type('à seule fin de adepte');
+      cy.get(`[data-cy="recipientAddress"]`).should('have.value', 'à seule fin de adepte');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

@@ -1,0 +1,30 @@
+{
+  "bitinfodashApp": {
+    "oHLCVT15m": {
+      "home": {
+        "title": "OHLCVT15ms",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau OHLCVT 15 M",
+        "createOrEditLabel": "Créer ou éditer un OHLCVT 15 M",
+        "notFound": "Aucun OHLCVT 15 M trouvé"
+      },
+      "created": "Un nouveau OHLCVT 15 M a été créé avec l'identifiant {{ param }}",
+      "updated": "Le OHLCVT 15 M avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le OHLCVT 15 M avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le OHLCVT 15 M {{ id }} ?"
+      },
+      "detail": {
+        "title": "OHLCVT 15 M"
+      },
+      "id": "ID",
+      "timestamp": "Timestamp",
+      "open": "Open",
+      "high": "High",
+      "low": "Low",
+      "close": "Close",
+      "volume": "Volume",
+      "trades": "Trades"
+    }
+  }
+}

@@ -21,6 +21,8 @@
       "address": "Address",
       "balance": "Balance",
       "label": "Label",
+      "sent": "Sent",
+      "received": "Received",
       "transactions": "Transactions"
     }
   }

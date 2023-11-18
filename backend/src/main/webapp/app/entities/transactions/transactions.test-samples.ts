@@ -3,21 +3,21 @@ import dayjs from 'dayjs/esm';
 import { ITransactions, NewTransactions } from './transactions.model';
 
 export const sampleWithRequiredData: ITransactions = {
-  id: 3327,
+  id: 5850,
 };
 
 export const sampleWithPartialData: ITransactions = {
-  id: 7847,
-  amount: 18076.03,
-  transactionDate: dayjs('2023-11-09T10:38'),
+  id: 20217,
+  transactionDate: dayjs('2023-11-09T16:43'),
+  recipientAddress: 'pour que en dehors de',
 };
 
 export const sampleWithFullData: ITransactions = {
-  id: 1226,
-  amount: 27322.67,
-  transactionDate: dayjs('2023-11-09T16:21'),
-  senderAddress: 'ha ha',
-  recipientAddress: 'redire hors naguère',
+  id: 24211,
+  amount: 26453.34,
+  transactionDate: dayjs('2023-11-09T12:31'),
+  senderAddress: 'simplifier',
+  recipientAddress: 'trop',
 };
 
 export const sampleWithNewData: NewTransactions = {

@@ -310,7 +310,8 @@ class BlockchainAnalyticsResourceIT {
             .averageTransactionFee(UPDATED_AVERAGE_TRANSACTION_FEE)
             .hashrateDistribution(UPDATED_HASHRATE_DISTRIBUTION)
             .timestamp(UPDATED_TIMESTAMP)
-            .difficulty(UPDATED_DIFFICULTY);
+            .difficulty(UPDATED_DIFFICULTY)
+            .networkHashrate(UPDATED_NETWORK_HASHRATE);
 
         restBlockchainAnalyticsMockMvc
             .perform(
@@ -329,7 +330,7 @@ class BlockchainAnalyticsResourceIT {
         assertThat(testBlockchainAnalytics.getHashrateDistribution()).isEqualTo(UPDATED_HASHRATE_DISTRIBUTION);
         assertThat(testBlockchainAnalytics.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
         assertThat(testBlockchainAnalytics.getDifficulty()).isEqualTo(UPDATED_DIFFICULTY);
-        assertThat(testBlockchainAnalytics.getNetworkHashrate()).isEqualTo(DEFAULT_NETWORK_HASHRATE);
+        assertThat(testBlockchainAnalytics.getNetworkHashrate()).isEqualTo(UPDATED_NETWORK_HASHRATE);
     }
 
     @Test

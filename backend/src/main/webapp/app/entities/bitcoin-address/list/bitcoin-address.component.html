@@ -56,6 +56,18 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="sent">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinAddress.sent">Sent</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="received">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinAddress.received">Received</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -67,6 +79,8 @@
           <td>{{ bitcoinAddress.address }}</td>
           <td>{{ bitcoinAddress.balance }}</td>
           <td>{{ bitcoinAddress.label }}</td>
+          <td>{{ bitcoinAddress.sent }}</td>
+          <td>{{ bitcoinAddress.received }}</td>
           <td class="text-end">
             <div class="btn-group">
               <a [routerLink]="['/bitcoin-address', bitcoinAddress.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

@@ -13,7 +13,13 @@
         "bitcoinAddress": "Bitcoin Address",
         "transactions": "Transactions",
         "marketTrends": "Market Trends",
-        "networkSecurity": "Network Security"
+        "networkSecurity": "Network Security",
+        "ohlcvt1M": "OHLCVT 1 M",
+        "ohlcvt5M": "OHLCVT 5 M",
+        "ohlcvt15M": "OHLCVT 15 M",
+        "ohlcvt1H": "OHLCVT 1 H",
+        "ohlcvt12H": "OHLCVT 12 H",
+        "ohlcvt1D": "OHLCVT 1 D"
       },
       "account": {
         "main": "Account",

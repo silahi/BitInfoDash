@@ -23,6 +23,8 @@ describe('BitcoinAddress Form Service', () => {
             address: expect.any(Object),
             balance: expect.any(Object),
             label: expect.any(Object),
+            sent: expect.any(Object),
+            received: expect.any(Object),
           }),
         );
       });
@@ -36,6 +38,8 @@ describe('BitcoinAddress Form Service', () => {
             address: expect.any(Object),
             balance: expect.any(Object),
             label: expect.any(Object),
+            sent: expect.any(Object),
+            received: expect.any(Object),
           }),
         );
       });

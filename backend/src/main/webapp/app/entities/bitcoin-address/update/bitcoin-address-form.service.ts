@@ -21,6 +21,8 @@ type BitcoinAddressFormGroupContent = {
   address: FormControl<IBitcoinAddress['address']>;
   balance: FormControl<IBitcoinAddress['balance']>;
   label: FormControl<IBitcoinAddress['label']>;
+  sent: FormControl<IBitcoinAddress['sent']>;
+  received: FormControl<IBitcoinAddress['received']>;
 };
 
 export type BitcoinAddressFormGroup = FormGroup<BitcoinAddressFormGroupContent>;
@@ -43,6 +45,8 @@ export class BitcoinAddressFormService {
       address: new FormControl(bitcoinAddressRawValue.address),
       balance: new FormControl(bitcoinAddressRawValue.balance),
       label: new FormControl(bitcoinAddressRawValue.label),
+      sent: new FormControl(bitcoinAddressRawValue.sent),
+      received: new FormControl(bitcoinAddressRawValue.received),
     });
   }
 

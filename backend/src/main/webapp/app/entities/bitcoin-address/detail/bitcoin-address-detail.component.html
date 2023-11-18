@@ -26,6 +26,14 @@
         <dd>
           <span>{{ bitcoinAddress.label }}</span>
         </dd>
+        <dt><span jhiTranslate="bitinfodashApp.bitcoinAddress.sent">Sent</span></dt>
+        <dd>
+          <span>{{ bitcoinAddress.sent }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.bitcoinAddress.received">Received</span></dt>
+        <dd>
+          <span>{{ bitcoinAddress.received }}</span>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

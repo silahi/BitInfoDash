@@ -3,22 +3,23 @@ import dayjs from 'dayjs/esm';
 import { INetworkSecurity, NewNetworkSecurity } from './network-security.model';
 
 export const sampleWithRequiredData: INetworkSecurity = {
-  id: 15316,
+  id: 29758,
 };
 
 export const sampleWithPartialData: INetworkSecurity = {
-  id: 19189,
-  timestamp: dayjs('2023-11-10T02:01'),
-  resolution: 'de diablement',
+  id: 9240,
+  alertType: 'snif ranger commis',
+  description: "spécialiste à l'instar de",
+  severity: 'commis de cuisine pourpre',
 };
 
 export const sampleWithFullData: INetworkSecurity = {
-  id: 12909,
-  alertType: 'bè',
-  description: 'confier pendant que voter',
-  timestamp: dayjs('2023-11-10T06:22'),
-  severity: 'rose suivant',
-  resolution: 'commissionnaire faire',
+  id: 25367,
+  alertType: 'triangulaire',
+  description: 'patientèle dedans gai',
+  timestamp: dayjs('2023-11-09T07:28'),
+  severity: 'cot cot dès tôt',
+  resolution: 'restituer',
 };
 
 export const sampleWithNewData: NewNetworkSecurity = {

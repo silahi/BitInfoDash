@@ -34,6 +34,12 @@ public class BitcoinAddress implements Serializable {
     @Column(name = "label")
     private String label;
 
+    @Column(name = "sent")
+    private Double sent;
+
+    @Column(name = "received")
+    private Double received;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "bitcoinAddress")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "bitcoinAddress" }, allowSetters = true)
@@ -91,6 +97,32 @@ public class BitcoinAddress implements Serializable {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public Double getSent() {
+        return this.sent;
+    }
+
+    public BitcoinAddress sent(Double sent) {
+        this.setSent(sent);
+        return this;
+    }
+
+    public void setSent(Double sent) {
+        this.sent = sent;
+    }
+
+    public Double getReceived() {
+        return this.received;
+    }
+
+    public BitcoinAddress received(Double received) {
+        this.setReceived(received);
+        return this;
+    }
+
+    public void setReceived(Double received) {
+        this.received = received;
     }
 
     public Set<Transactions> getTransactions() {
@@ -151,6 +183,8 @@ public class BitcoinAddress implements Serializable {
             ", address='" + getAddress() + "'" +
             ", balance=" + getBalance() +
             ", label='" + getLabel() + "'" +
+            ", sent=" + getSent() +
+            ", received=" + getReceived() +
             "}";
     }
 }

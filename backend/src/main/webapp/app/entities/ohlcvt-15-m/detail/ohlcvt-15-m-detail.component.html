@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="oHLCVT15m">
+      <h2 data-cy="oHLCVT15mDetailsHeading"><span jhiTranslate="bitinfodashApp.oHLCVT15m.detail.title">OHLCVT 15 M</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ oHLCVT15m.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.oHLCVT15m.timestamp">Timestamp</span></dt>
+        <dd>
+          <span>{{ oHLCVT15m.timestamp | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.oHLCVT15m.open">Open</span></dt>
+        <dd>
+          <span>{{ oHLCVT15m.open }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.oHLCVT15m.high">High</span></dt>
+        <dd>
+          <span>{{ oHLCVT15m.high }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.oHLCVT15m.low">Low</span></dt>
+        <dd>
+          <span>{{ oHLCVT15m.low }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.oHLCVT15m.close">Close</span></dt>
+        <dd>
+          <span>{{ oHLCVT15m.close }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.oHLCVT15m.volume">Volume</span></dt>
+        <dd>
+          <span>{{ oHLCVT15m.volume }}</span>
+        </dd>
+        <dt><span jhiTranslate="bitinfodashApp.oHLCVT15m.trades">Trades</span></dt>
+        <dd>
+          <span>{{ oHLCVT15m.trades }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ohlcvt-15-m', oHLCVT15m.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

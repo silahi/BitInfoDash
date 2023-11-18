@@ -279,7 +279,7 @@ class TransactionsResourceIT {
         Transactions partialUpdatedTransactions = new Transactions();
         partialUpdatedTransactions.setId(transactions.getId());
 
-        partialUpdatedTransactions.amount(UPDATED_AMOUNT).senderAddress(UPDATED_SENDER_ADDRESS).recipientAddress(UPDATED_RECIPIENT_ADDRESS);
+        partialUpdatedTransactions.senderAddress(UPDATED_SENDER_ADDRESS);
 
         restTransactionsMockMvc
             .perform(
@@ -293,10 +293,10 @@ class TransactionsResourceIT {
         List<Transactions> transactionsList = transactionsRepository.findAll();
         assertThat(transactionsList).hasSize(databaseSizeBeforeUpdate);
         Transactions testTransactions = transactionsList.get(transactionsList.size() - 1);
-        assertThat(testTransactions.getAmount()).isEqualTo(UPDATED_AMOUNT);
+        assertThat(testTransactions.getAmount()).isEqualTo(DEFAULT_AMOUNT);
         assertThat(testTransactions.getTransactionDate()).isEqualTo(DEFAULT_TRANSACTION_DATE);
         assertThat(testTransactions.getSenderAddress()).isEqualTo(UPDATED_SENDER_ADDRESS);
-        assertThat(testTransactions.getRecipientAddress()).isEqualTo(UPDATED_RECIPIENT_ADDRESS);
+        assertThat(testTransactions.getRecipientAddress()).isEqualTo(DEFAULT_RECIPIENT_ADDRESS);
     }
 
     @Test

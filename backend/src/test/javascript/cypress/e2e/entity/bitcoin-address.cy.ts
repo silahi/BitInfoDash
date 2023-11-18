@@ -157,14 +157,20 @@ describe('BitcoinAddress e2e test', () => {
     });
 
     it('should create an instance of BitcoinAddress', () => {
-      cy.get(`[data-cy="address"]`).type('du moment que');
-      cy.get(`[data-cy="address"]`).should('have.value', 'du moment que');
+      cy.get(`[data-cy="address"]`).type('trop blablabla tendre');
+      cy.get(`[data-cy="address"]`).should('have.value', 'trop blablabla tendre');
 
-      cy.get(`[data-cy="balance"]`).type('31533.72');
-      cy.get(`[data-cy="balance"]`).should('have.value', '31533.72');
+      cy.get(`[data-cy="balance"]`).type('4793.5');
+      cy.get(`[data-cy="balance"]`).should('have.value', '4793.5');
 
-      cy.get(`[data-cy="label"]`).type("à l'égard de commis administration");
-      cy.get(`[data-cy="label"]`).should('have.value', "à l'égard de commis administration");
+      cy.get(`[data-cy="label"]`).type('guide présidence');
+      cy.get(`[data-cy="label"]`).should('have.value', 'guide présidence');
+
+      cy.get(`[data-cy="sent"]`).type('3348.16');
+      cy.get(`[data-cy="sent"]`).should('have.value', '3348.16');
+
+      cy.get(`[data-cy="received"]`).type('3515.99');
+      cy.get(`[data-cy="received"]`).should('have.value', '3515.99');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

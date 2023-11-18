@@ -279,7 +279,7 @@ class MarketTrendsResourceIT {
         MarketTrends partialUpdatedMarketTrends = new MarketTrends();
         partialUpdatedMarketTrends.setId(marketTrends.getId());
 
-        partialUpdatedMarketTrends.indicatorValue(UPDATED_INDICATOR_VALUE).timestamp(UPDATED_TIMESTAMP);
+        partialUpdatedMarketTrends.trendName(UPDATED_TREND_NAME).indicatorValue(UPDATED_INDICATOR_VALUE).trendType(UPDATED_TREND_TYPE);
 
         restMarketTrendsMockMvc
             .perform(
@@ -293,10 +293,10 @@ class MarketTrendsResourceIT {
         List<MarketTrends> marketTrendsList = marketTrendsRepository.findAll();
         assertThat(marketTrendsList).hasSize(databaseSizeBeforeUpdate);
         MarketTrends testMarketTrends = marketTrendsList.get(marketTrendsList.size() - 1);
-        assertThat(testMarketTrends.getTrendName()).isEqualTo(DEFAULT_TREND_NAME);
+        assertThat(testMarketTrends.getTrendName()).isEqualTo(UPDATED_TREND_NAME);
         assertThat(testMarketTrends.getIndicatorValue()).isEqualTo(UPDATED_INDICATOR_VALUE);
-        assertThat(testMarketTrends.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
-        assertThat(testMarketTrends.getTrendType()).isEqualTo(DEFAULT_TREND_TYPE);
+        assertThat(testMarketTrends.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
+        assertThat(testMarketTrends.getTrendType()).isEqualTo(UPDATED_TREND_TYPE);
     }
 
     @Test

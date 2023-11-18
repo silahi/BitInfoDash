@@ -3,22 +3,25 @@ import dayjs from 'dayjs/esm';
 import { IBlockchainAnalytics, NewBlockchainAnalytics } from './blockchain-analytics.model';
 
 export const sampleWithRequiredData: IBlockchainAnalytics = {
-  id: 17236,
+  id: 2913,
 };
 
 export const sampleWithPartialData: IBlockchainAnalytics = {
-  id: 5380,
-  difficulty: 23606.74,
+  id: 32394,
+  transactionCount: 4895,
+  hashrateDistribution: 'ouin oh chut',
+  timestamp: dayjs('2023-11-09T11:27'),
+  difficulty: 2002.85,
 };
 
 export const sampleWithFullData: IBlockchainAnalytics = {
-  id: 26434,
-  transactionCount: 24178,
-  averageTransactionFee: 29719.36,
-  hashrateDistribution: "d'avec sursauter",
-  timestamp: dayjs('2023-11-09T13:55'),
-  difficulty: 18767.07,
-  networkHashrate: 30207.72,
+  id: 28700,
+  transactionCount: 1136,
+  averageTransactionFee: 3643.65,
+  hashrateDistribution: 'hors de',
+  timestamp: dayjs('2023-11-09T14:50'),
+  difficulty: 6368.01,
+  networkHashrate: 28759.79,
 };
 
 export const sampleWithNewData: NewBlockchainAnalytics = {

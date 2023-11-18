@@ -305,7 +305,7 @@ class BitcoinOverviewResourceIT {
         BitcoinOverview partialUpdatedBitcoinOverview = new BitcoinOverview();
         partialUpdatedBitcoinOverview.setId(bitcoinOverview.getId());
 
-        partialUpdatedBitcoinOverview.marketCap(UPDATED_MARKET_CAP);
+        partialUpdatedBitcoinOverview.marketCap(UPDATED_MARKET_CAP).exchangeVolume(UPDATED_EXCHANGE_VOLUME).currency(UPDATED_CURRENCY);
 
         restBitcoinOverviewMockMvc
             .perform(
@@ -321,10 +321,10 @@ class BitcoinOverviewResourceIT {
         BitcoinOverview testBitcoinOverview = bitcoinOverviewList.get(bitcoinOverviewList.size() - 1);
         assertThat(testBitcoinOverview.getBitcoinPrice()).isEqualTo(DEFAULT_BITCOIN_PRICE);
         assertThat(testBitcoinOverview.getMarketCap()).isEqualTo(UPDATED_MARKET_CAP);
-        assertThat(testBitcoinOverview.getExchangeVolume()).isEqualTo(DEFAULT_EXCHANGE_VOLUME);
+        assertThat(testBitcoinOverview.getExchangeVolume()).isEqualTo(UPDATED_EXCHANGE_VOLUME);
         assertThat(testBitcoinOverview.getRecentVariation()).isEqualTo(DEFAULT_RECENT_VARIATION);
         assertThat(testBitcoinOverview.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
-        assertThat(testBitcoinOverview.getCurrency()).isEqualTo(DEFAULT_CURRENCY);
+        assertThat(testBitcoinOverview.getCurrency()).isEqualTo(UPDATED_CURRENCY);
     }
 
     @Test
