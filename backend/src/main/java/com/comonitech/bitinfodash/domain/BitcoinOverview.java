@@ -36,7 +36,7 @@ public class BitcoinOverview implements Serializable {
     private Instant timestamp;
 
     @Column(name = "currency")
-    private String currency;
+    private String currency = "USD";
 
     @Column(name = "volume_change_24_h")
     private Double volumeChange24h;
