@@ -1,18 +1,10 @@
 package com.comonitech.bitinfodash.web.rest;
 
-import com.comonitech.bitinfodash.config.CoinMarketCapProperties;
 import com.comonitech.bitinfodash.domain.BitcoinOverview;
 import com.comonitech.bitinfodash.repository.BitcoinOverviewRepository;
-import com.comonitech.bitinfodash.service.CoinMarketCapService;
 import com.comonitech.bitinfodash.web.rest.errors.BadRequestAlertException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.time.Instant;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,8 +18,7 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing
- * {@link com.comonitech.bitinfodash.domain.BitcoinOverview}.
+ * REST controller for managing {@link com.comonitech.bitinfodash.domain.BitcoinOverview}.
  */
 @RestController
 @RequestMapping("/api/bitcoin-overviews")
@@ -42,63 +33,46 @@ public class BitcoinOverviewResource {
     private String applicationName;
 
     private final BitcoinOverviewRepository bitcoinOverviewRepository;
-    private final CoinMarketCapService coinMarketCapService;
-    private final ObjectMapper objectMapper;
-    private final CoinMarketCapProperties coinMarketCapProperties;
 
-    public BitcoinOverviewResource(
-            BitcoinOverviewRepository bitcoinOverviewRepository,
-            CoinMarketCapService coinMarketCapService,
-            CoinMarketCapProperties coinMarketCapProperties,
-            ObjectMapper objectMapper) {
+    public BitcoinOverviewResource(BitcoinOverviewRepository bitcoinOverviewRepository) {
         this.bitcoinOverviewRepository = bitcoinOverviewRepository;
-        this.coinMarketCapService = coinMarketCapService;
-        this.coinMarketCapProperties = coinMarketCapProperties;
-        this.objectMapper = objectMapper;
     }
 
     /**
      * {@code POST  /bitcoin-overviews} : Create a new bitcoinOverview.
      *
      * @param bitcoinOverview the bitcoinOverview to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with
-     *         body the new bitcoinOverview, or with status
-     *         {@code 400 (Bad Request)} if the bitcoinOverview has already an ID.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new bitcoinOverview, or with status {@code 400 (Bad Request)} if the bitcoinOverview has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<BitcoinOverview> createBitcoinOverview(@RequestBody BitcoinOverview bitcoinOverview)
-            throws URISyntaxException {
+    public ResponseEntity<BitcoinOverview> createBitcoinOverview(@RequestBody BitcoinOverview bitcoinOverview) throws URISyntaxException {
         log.debug("REST request to save BitcoinOverview : {}", bitcoinOverview);
         if (bitcoinOverview.getId() != null) {
-            throw new BadRequestAlertException("A new bitcoinOverview cannot already have an ID", ENTITY_NAME,
-                    "idexists");
+            throw new BadRequestAlertException("A new bitcoinOverview cannot already have an ID", ENTITY_NAME, "idexists");
         }
         BitcoinOverview result = bitcoinOverviewRepository.save(bitcoinOverview);
         return ResponseEntity
-                .created(new URI("/api/bitcoin-overviews/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME,
-                        result.getId().toString()))
-                .body(result);
+            .created(new URI("/api/bitcoin-overviews/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+            .body(result);
     }
 
     /**
      * {@code PUT  /bitcoin-overviews/:id} : Updates an existing bitcoinOverview.
      *
-     * @param id              the id of the bitcoinOverview to save.
+     * @param id the id of the bitcoinOverview to save.
      * @param bitcoinOverview the bitcoinOverview to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
-     *         the updated bitcoinOverview,
-     *         or with status {@code 400 (Bad Request)} if the bitcoinOverview is
-     *         not valid,
-     *         or with status {@code 500 (Internal Server Error)} if the
-     *         bitcoinOverview couldn't be updated.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated bitcoinOverview,
+     * or with status {@code 400 (Bad Request)} if the bitcoinOverview is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the bitcoinOverview couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/{id}")
     public ResponseEntity<BitcoinOverview> updateBitcoinOverview(
-            @PathVariable(value = "id", required = false) final Long id,
-            @RequestBody BitcoinOverview bitcoinOverview) throws URISyntaxException {
+        @PathVariable(value = "id", required = false) final Long id,
+        @RequestBody BitcoinOverview bitcoinOverview
+    ) throws URISyntaxException {
         log.debug("REST request to update BitcoinOverview : {}, {}", id, bitcoinOverview);
         if (bitcoinOverview.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -113,32 +87,27 @@ public class BitcoinOverviewResource {
 
         BitcoinOverview result = bitcoinOverviewRepository.save(bitcoinOverview);
         return ResponseEntity
-                .ok()
-                .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME,
-                        bitcoinOverview.getId().toString()))
-                .body(result);
+            .ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, bitcoinOverview.getId().toString()))
+            .body(result);
     }
 
     /**
-     * {@code PATCH  /bitcoin-overviews/:id} : Partial updates given fields of an
-     * existing bitcoinOverview, field will ignore if it is null
+     * {@code PATCH  /bitcoin-overviews/:id} : Partial updates given fields of an existing bitcoinOverview, field will ignore if it is null
      *
-     * @param id              the id of the bitcoinOverview to save.
+     * @param id the id of the bitcoinOverview to save.
      * @param bitcoinOverview the bitcoinOverview to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
-     *         the updated bitcoinOverview,
-     *         or with status {@code 400 (Bad Request)} if the bitcoinOverview is
-     *         not valid,
-     *         or with status {@code 404 (Not Found)} if the bitcoinOverview is not
-     *         found,
-     *         or with status {@code 500 (Internal Server Error)} if the
-     *         bitcoinOverview couldn't be updated.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated bitcoinOverview,
+     * or with status {@code 400 (Bad Request)} if the bitcoinOverview is not valid,
+     * or with status {@code 404 (Not Found)} if the bitcoinOverview is not found,
+     * or with status {@code 500 (Internal Server Error)} if the bitcoinOverview couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<BitcoinOverview> partialUpdateBitcoinOverview(
-            @PathVariable(value = "id", required = false) final Long id,
-            @RequestBody BitcoinOverview bitcoinOverview) throws URISyntaxException {
+        @PathVariable(value = "id", required = false) final Long id,
+        @RequestBody BitcoinOverview bitcoinOverview
+    ) throws URISyntaxException {
         log.debug("REST request to partial update BitcoinOverview partially : {}, {}", id, bitcoinOverview);
         if (bitcoinOverview.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -152,58 +121,71 @@ public class BitcoinOverviewResource {
         }
 
         Optional<BitcoinOverview> result = bitcoinOverviewRepository
-                .findById(bitcoinOverview.getId())
-                .map(existingBitcoinOverview -> {
-                    if (bitcoinOverview.getBitcoinPrice() != null) {
-                        existingBitcoinOverview.setBitcoinPrice(bitcoinOverview.getBitcoinPrice());
-                    }
-                    if (bitcoinOverview.getMarketCap() != null) {
-                        existingBitcoinOverview.setMarketCap(bitcoinOverview.getMarketCap());
-                    }
-                    if (bitcoinOverview.getExchangeVolume() != null) {
-                        existingBitcoinOverview.setExchangeVolume(bitcoinOverview.getExchangeVolume());
-                    }
-                    if (bitcoinOverview.getRecentVariation() != null) {
-                        existingBitcoinOverview.setRecentVariation(bitcoinOverview.getRecentVariation());
-                    }
-                    if (bitcoinOverview.getTimestamp() != null) {
-                        existingBitcoinOverview.setTimestamp(bitcoinOverview.getTimestamp());
-                    }
-                    if (bitcoinOverview.getCurrency() != null) {
-                        existingBitcoinOverview.setCurrency(bitcoinOverview.getCurrency());
-                    }
+            .findById(bitcoinOverview.getId())
+            .map(existingBitcoinOverview -> {
+                if (bitcoinOverview.getBitcoinPrice() != null) {
+                    existingBitcoinOverview.setBitcoinPrice(bitcoinOverview.getBitcoinPrice());
+                }
+                if (bitcoinOverview.getMarketCap() != null) {
+                    existingBitcoinOverview.setMarketCap(bitcoinOverview.getMarketCap());
+                }
+                if (bitcoinOverview.getExchangeVolume() != null) {
+                    existingBitcoinOverview.setExchangeVolume(bitcoinOverview.getExchangeVolume());
+                }
+                if (bitcoinOverview.getTimestamp() != null) {
+                    existingBitcoinOverview.setTimestamp(bitcoinOverview.getTimestamp());
+                }
+                if (bitcoinOverview.getCurrency() != null) {
+                    existingBitcoinOverview.setCurrency(bitcoinOverview.getCurrency());
+                }
+                if (bitcoinOverview.getVolumeChange24h() != null) {
+                    existingBitcoinOverview.setVolumeChange24h(bitcoinOverview.getVolumeChange24h());
+                }
+                if (bitcoinOverview.getPercentChange1h() != null) {
+                    existingBitcoinOverview.setPercentChange1h(bitcoinOverview.getPercentChange1h());
+                }
+                if (bitcoinOverview.getPercentChange24h() != null) {
+                    existingBitcoinOverview.setPercentChange24h(bitcoinOverview.getPercentChange24h());
+                }
+                if (bitcoinOverview.getPercentChange7d() != null) {
+                    existingBitcoinOverview.setPercentChange7d(bitcoinOverview.getPercentChange7d());
+                }
+                if (bitcoinOverview.getPercentChange30d() != null) {
+                    existingBitcoinOverview.setPercentChange30d(bitcoinOverview.getPercentChange30d());
+                }
+                if (bitcoinOverview.getPercentChange60d() != null) {
+                    existingBitcoinOverview.setPercentChange60d(bitcoinOverview.getPercentChange60d());
+                }
+                if (bitcoinOverview.getPercentChange90d() != null) {
+                    existingBitcoinOverview.setPercentChange90d(bitcoinOverview.getPercentChange90d());
+                }
 
-                    return existingBitcoinOverview;
-                })
-                .map(bitcoinOverviewRepository::save);
+                return existingBitcoinOverview;
+            })
+            .map(bitcoinOverviewRepository::save);
 
         return ResponseUtil.wrapOrNotFound(
-                result,
-                HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME,
-                        bitcoinOverview.getId().toString()));
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, bitcoinOverview.getId().toString())
+        );
     }
 
     /**
      * {@code GET  /bitcoin-overviews} : get all the bitcoinOverviews.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list
-     *         of bitcoinOverviews in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of bitcoinOverviews in body.
      */
     @GetMapping("")
-    public ResponseEntity<BitcoinOverview> getAllBitcoinOverviews() {
+    public List<BitcoinOverview> getAllBitcoinOverviews() {
         log.debug("REST request to get all BitcoinOverviews");
-        String bitcoinInfo = coinMarketCapService.getBitcoinInfo();
-        BitcoinOverview bitcoinOverview = parseBitcoinInfo(bitcoinInfo);
-        bitcoinOverviewRepository.save(bitcoinOverview);
-        return ResponseEntity.ok().body(bitcoinOverview);
+        return bitcoinOverviewRepository.findAll();
     }
 
     /**
      * {@code GET  /bitcoin-overviews/:id} : get the "id" bitcoinOverview.
      *
      * @param id the id of the bitcoinOverview to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
-     *         the bitcoinOverview, or with status {@code 404 (Not Found)}.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the bitcoinOverview, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
     public ResponseEntity<BitcoinOverview> getBitcoinOverview(@PathVariable Long id) {
@@ -223,34 +205,8 @@ public class BitcoinOverviewResource {
         log.debug("REST request to delete BitcoinOverview : {}", id);
         bitcoinOverviewRepository.deleteById(id);
         return ResponseEntity
-                .noContent()
-                .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
-                .build();
-    }
-
-    private BitcoinOverview parseBitcoinInfo(String bitcoinInfo) {
-        BitcoinOverview bitcoinOverview = new BitcoinOverview();
-
-        try {
-            JsonNode root = objectMapper.readTree(bitcoinInfo);
-            JsonNode dataNode = root.path("data").path(coinMarketCapProperties.getSymbol());
-
-            bitcoinOverview.setBitcoinPrice(dataNode.path("quote").path("USD").path("price").asDouble());
-            bitcoinOverview.setMarketCap(dataNode.path("quote").path("USD").path("market_cap").asDouble());
-            bitcoinOverview.setRecentVariation(dataNode.path("quote").path("USD").path("percent_change_24h").asDouble()); 
-            bitcoinOverview.setExchangeVolume(dataNode.path("quote").path("USD").path("volume_change_24h").asDouble());
-
-            // Set timestamp using Instant if available in the JSON
-            String timestampStr = dataNode.path("last_updated").asText();
-            if (!timestampStr.isEmpty()) {
-                Instant timestamp = Instant.parse(timestampStr);
-                bitcoinOverview.setTimestamp(timestamp);
-            }
-
-        } catch (IOException e) {
-            log.error("Error parsing CoinMarketCap response: {}", e.getMessage());
-        }
-
-        return bitcoinOverview;
+            .noContent()
+            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
+            .build();
     }
 }

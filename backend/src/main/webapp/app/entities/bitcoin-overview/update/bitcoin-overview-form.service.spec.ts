@@ -23,9 +23,15 @@ describe('BitcoinOverview Form Service', () => {
             bitcoinPrice: expect.any(Object),
             marketCap: expect.any(Object),
             exchangeVolume: expect.any(Object),
-            recentVariation: expect.any(Object),
             timestamp: expect.any(Object),
             currency: expect.any(Object),
+            volumeChange24h: expect.any(Object),
+            percentChange1h: expect.any(Object),
+            percentChange24h: expect.any(Object),
+            percentChange7d: expect.any(Object),
+            percentChange30d: expect.any(Object),
+            percentChange60d: expect.any(Object),
+            percentChange90d: expect.any(Object),
           }),
         );
       });
@@ -39,9 +45,15 @@ describe('BitcoinOverview Form Service', () => {
             bitcoinPrice: expect.any(Object),
             marketCap: expect.any(Object),
             exchangeVolume: expect.any(Object),
-            recentVariation: expect.any(Object),
             timestamp: expect.any(Object),
             currency: expect.any(Object),
+            volumeChange24h: expect.any(Object),
+            percentChange1h: expect.any(Object),
+            percentChange24h: expect.any(Object),
+            percentChange7d: expect.any(Object),
+            percentChange30d: expect.any(Object),
+            percentChange60d: expect.any(Object),
+            percentChange90d: expect.any(Object),
           }),
         );
       });

@@ -16,16 +16,40 @@
       "fieldType": "Double"
     },
     {
-      "fieldName": "recentVariation",
-      "fieldType": "Double"
-    },
-    {
       "fieldName": "timestamp",
       "fieldType": "Instant"
     },
     {
       "fieldName": "currency",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "volumeChange24h",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "percentChange1h",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "percentChange24h",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "percentChange7d",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "percentChange30d",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "percentChange60d",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "percentChange90d",
+      "fieldType": "Double"
     }
   ],
   "name": "BitcoinOverview",

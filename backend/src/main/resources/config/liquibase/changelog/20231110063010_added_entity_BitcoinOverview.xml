@@ -23,13 +23,31 @@
             <column name="exchange_volume" type="double">
                 <constraints nullable="true" />
             </column>
-            <column name="recent_variation" type="double">
-                <constraints nullable="true" />
-            </column>
             <column name="timestamp" type="${datetimeType}">
                 <constraints nullable="true" />
             </column>
             <column name="currency" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="volume_change_24_h" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="percent_change_1_h" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="percent_change_24_h" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="percent_change_7_d" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="percent_change_30_d" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="percent_change_60_d" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="percent_change_90_d" type="double">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -57,9 +75,15 @@
             <column name="bitcoin_price" type="numeric"/>
             <column name="market_cap" type="numeric"/>
             <column name="exchange_volume" type="numeric"/>
-            <column name="recent_variation" type="numeric"/>
             <column name="timestamp" type="date"/>
             <column name="currency" type="string"/>
+            <column name="volume_change_24_h" type="numeric"/>
+            <column name="percent_change_1_h" type="numeric"/>
+            <column name="percent_change_24_h" type="numeric"/>
+            <column name="percent_change_7_d" type="numeric"/>
+            <column name="percent_change_30_d" type="numeric"/>
+            <column name="percent_change_60_d" type="numeric"/>
+            <column name="percent_change_90_d" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

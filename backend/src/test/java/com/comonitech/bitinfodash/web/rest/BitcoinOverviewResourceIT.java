@@ -40,14 +40,32 @@ class BitcoinOverviewResourceIT {
     private static final Double DEFAULT_EXCHANGE_VOLUME = 1D;
     private static final Double UPDATED_EXCHANGE_VOLUME = 2D;
 
-    private static final Double DEFAULT_RECENT_VARIATION = 1D;
-    private static final Double UPDATED_RECENT_VARIATION = 2D;
-
     private static final Instant DEFAULT_TIMESTAMP = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_TIMESTAMP = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final String DEFAULT_CURRENCY = "AAAAAAAAAA";
     private static final String UPDATED_CURRENCY = "BBBBBBBBBB";
+
+    private static final Double DEFAULT_VOLUME_CHANGE_24_H = 1D;
+    private static final Double UPDATED_VOLUME_CHANGE_24_H = 2D;
+
+    private static final Double DEFAULT_PERCENT_CHANGE_1_H = 1D;
+    private static final Double UPDATED_PERCENT_CHANGE_1_H = 2D;
+
+    private static final Double DEFAULT_PERCENT_CHANGE_24_H = 1D;
+    private static final Double UPDATED_PERCENT_CHANGE_24_H = 2D;
+
+    private static final Double DEFAULT_PERCENT_CHANGE_7_D = 1D;
+    private static final Double UPDATED_PERCENT_CHANGE_7_D = 2D;
+
+    private static final Double DEFAULT_PERCENT_CHANGE_30_D = 1D;
+    private static final Double UPDATED_PERCENT_CHANGE_30_D = 2D;
+
+    private static final Double DEFAULT_PERCENT_CHANGE_60_D = 1D;
+    private static final Double UPDATED_PERCENT_CHANGE_60_D = 2D;
+
+    private static final Double DEFAULT_PERCENT_CHANGE_90_D = 1D;
+    private static final Double UPDATED_PERCENT_CHANGE_90_D = 2D;
 
     private static final String ENTITY_API_URL = "/api/bitcoin-overviews";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -77,9 +95,15 @@ class BitcoinOverviewResourceIT {
             .bitcoinPrice(DEFAULT_BITCOIN_PRICE)
             .marketCap(DEFAULT_MARKET_CAP)
             .exchangeVolume(DEFAULT_EXCHANGE_VOLUME)
-            .recentVariation(DEFAULT_RECENT_VARIATION)
             .timestamp(DEFAULT_TIMESTAMP)
-            .currency(DEFAULT_CURRENCY);
+            .currency(DEFAULT_CURRENCY)
+            .volumeChange24h(DEFAULT_VOLUME_CHANGE_24_H)
+            .percentChange1h(DEFAULT_PERCENT_CHANGE_1_H)
+            .percentChange24h(DEFAULT_PERCENT_CHANGE_24_H)
+            .percentChange7d(DEFAULT_PERCENT_CHANGE_7_D)
+            .percentChange30d(DEFAULT_PERCENT_CHANGE_30_D)
+            .percentChange60d(DEFAULT_PERCENT_CHANGE_60_D)
+            .percentChange90d(DEFAULT_PERCENT_CHANGE_90_D);
         return bitcoinOverview;
     }
 
@@ -94,9 +118,15 @@ class BitcoinOverviewResourceIT {
             .bitcoinPrice(UPDATED_BITCOIN_PRICE)
             .marketCap(UPDATED_MARKET_CAP)
             .exchangeVolume(UPDATED_EXCHANGE_VOLUME)
-            .recentVariation(UPDATED_RECENT_VARIATION)
             .timestamp(UPDATED_TIMESTAMP)
-            .currency(UPDATED_CURRENCY);
+            .currency(UPDATED_CURRENCY)
+            .volumeChange24h(UPDATED_VOLUME_CHANGE_24_H)
+            .percentChange1h(UPDATED_PERCENT_CHANGE_1_H)
+            .percentChange24h(UPDATED_PERCENT_CHANGE_24_H)
+            .percentChange7d(UPDATED_PERCENT_CHANGE_7_D)
+            .percentChange30d(UPDATED_PERCENT_CHANGE_30_D)
+            .percentChange60d(UPDATED_PERCENT_CHANGE_60_D)
+            .percentChange90d(UPDATED_PERCENT_CHANGE_90_D);
         return bitcoinOverview;
     }
 
@@ -123,9 +153,15 @@ class BitcoinOverviewResourceIT {
         assertThat(testBitcoinOverview.getBitcoinPrice()).isEqualTo(DEFAULT_BITCOIN_PRICE);
         assertThat(testBitcoinOverview.getMarketCap()).isEqualTo(DEFAULT_MARKET_CAP);
         assertThat(testBitcoinOverview.getExchangeVolume()).isEqualTo(DEFAULT_EXCHANGE_VOLUME);
-        assertThat(testBitcoinOverview.getRecentVariation()).isEqualTo(DEFAULT_RECENT_VARIATION);
         assertThat(testBitcoinOverview.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
         assertThat(testBitcoinOverview.getCurrency()).isEqualTo(DEFAULT_CURRENCY);
+        assertThat(testBitcoinOverview.getVolumeChange24h()).isEqualTo(DEFAULT_VOLUME_CHANGE_24_H);
+        assertThat(testBitcoinOverview.getPercentChange1h()).isEqualTo(DEFAULT_PERCENT_CHANGE_1_H);
+        assertThat(testBitcoinOverview.getPercentChange24h()).isEqualTo(DEFAULT_PERCENT_CHANGE_24_H);
+        assertThat(testBitcoinOverview.getPercentChange7d()).isEqualTo(DEFAULT_PERCENT_CHANGE_7_D);
+        assertThat(testBitcoinOverview.getPercentChange30d()).isEqualTo(DEFAULT_PERCENT_CHANGE_30_D);
+        assertThat(testBitcoinOverview.getPercentChange60d()).isEqualTo(DEFAULT_PERCENT_CHANGE_60_D);
+        assertThat(testBitcoinOverview.getPercentChange90d()).isEqualTo(DEFAULT_PERCENT_CHANGE_90_D);
     }
 
     @Test
@@ -163,9 +199,15 @@ class BitcoinOverviewResourceIT {
             .andExpect(jsonPath("$.[*].bitcoinPrice").value(hasItem(DEFAULT_BITCOIN_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].marketCap").value(hasItem(DEFAULT_MARKET_CAP.doubleValue())))
             .andExpect(jsonPath("$.[*].exchangeVolume").value(hasItem(DEFAULT_EXCHANGE_VOLUME.doubleValue())))
-            .andExpect(jsonPath("$.[*].recentVariation").value(hasItem(DEFAULT_RECENT_VARIATION.doubleValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP.toString())))
-            .andExpect(jsonPath("$.[*].currency").value(hasItem(DEFAULT_CURRENCY)));
+            .andExpect(jsonPath("$.[*].currency").value(hasItem(DEFAULT_CURRENCY)))
+            .andExpect(jsonPath("$.[*].volumeChange24h").value(hasItem(DEFAULT_VOLUME_CHANGE_24_H.doubleValue())))
+            .andExpect(jsonPath("$.[*].percentChange1h").value(hasItem(DEFAULT_PERCENT_CHANGE_1_H.doubleValue())))
+            .andExpect(jsonPath("$.[*].percentChange24h").value(hasItem(DEFAULT_PERCENT_CHANGE_24_H.doubleValue())))
+            .andExpect(jsonPath("$.[*].percentChange7d").value(hasItem(DEFAULT_PERCENT_CHANGE_7_D.doubleValue())))
+            .andExpect(jsonPath("$.[*].percentChange30d").value(hasItem(DEFAULT_PERCENT_CHANGE_30_D.doubleValue())))
+            .andExpect(jsonPath("$.[*].percentChange60d").value(hasItem(DEFAULT_PERCENT_CHANGE_60_D.doubleValue())))
+            .andExpect(jsonPath("$.[*].percentChange90d").value(hasItem(DEFAULT_PERCENT_CHANGE_90_D.doubleValue())));
     }
 
     @Test
@@ -183,9 +225,15 @@ class BitcoinOverviewResourceIT {
             .andExpect(jsonPath("$.bitcoinPrice").value(DEFAULT_BITCOIN_PRICE.doubleValue()))
             .andExpect(jsonPath("$.marketCap").value(DEFAULT_MARKET_CAP.doubleValue()))
             .andExpect(jsonPath("$.exchangeVolume").value(DEFAULT_EXCHANGE_VOLUME.doubleValue()))
-            .andExpect(jsonPath("$.recentVariation").value(DEFAULT_RECENT_VARIATION.doubleValue()))
             .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP.toString()))
-            .andExpect(jsonPath("$.currency").value(DEFAULT_CURRENCY));
+            .andExpect(jsonPath("$.currency").value(DEFAULT_CURRENCY))
+            .andExpect(jsonPath("$.volumeChange24h").value(DEFAULT_VOLUME_CHANGE_24_H.doubleValue()))
+            .andExpect(jsonPath("$.percentChange1h").value(DEFAULT_PERCENT_CHANGE_1_H.doubleValue()))
+            .andExpect(jsonPath("$.percentChange24h").value(DEFAULT_PERCENT_CHANGE_24_H.doubleValue()))
+            .andExpect(jsonPath("$.percentChange7d").value(DEFAULT_PERCENT_CHANGE_7_D.doubleValue()))
+            .andExpect(jsonPath("$.percentChange30d").value(DEFAULT_PERCENT_CHANGE_30_D.doubleValue()))
+            .andExpect(jsonPath("$.percentChange60d").value(DEFAULT_PERCENT_CHANGE_60_D.doubleValue()))
+            .andExpect(jsonPath("$.percentChange90d").value(DEFAULT_PERCENT_CHANGE_90_D.doubleValue()));
     }
 
     @Test
@@ -211,9 +259,15 @@ class BitcoinOverviewResourceIT {
             .bitcoinPrice(UPDATED_BITCOIN_PRICE)
             .marketCap(UPDATED_MARKET_CAP)
             .exchangeVolume(UPDATED_EXCHANGE_VOLUME)
-            .recentVariation(UPDATED_RECENT_VARIATION)
             .timestamp(UPDATED_TIMESTAMP)
-            .currency(UPDATED_CURRENCY);
+            .currency(UPDATED_CURRENCY)
+            .volumeChange24h(UPDATED_VOLUME_CHANGE_24_H)
+            .percentChange1h(UPDATED_PERCENT_CHANGE_1_H)
+            .percentChange24h(UPDATED_PERCENT_CHANGE_24_H)
+            .percentChange7d(UPDATED_PERCENT_CHANGE_7_D)
+            .percentChange30d(UPDATED_PERCENT_CHANGE_30_D)
+            .percentChange60d(UPDATED_PERCENT_CHANGE_60_D)
+            .percentChange90d(UPDATED_PERCENT_CHANGE_90_D);
 
         restBitcoinOverviewMockMvc
             .perform(
@@ -230,9 +284,15 @@ class BitcoinOverviewResourceIT {
         assertThat(testBitcoinOverview.getBitcoinPrice()).isEqualTo(UPDATED_BITCOIN_PRICE);
         assertThat(testBitcoinOverview.getMarketCap()).isEqualTo(UPDATED_MARKET_CAP);
         assertThat(testBitcoinOverview.getExchangeVolume()).isEqualTo(UPDATED_EXCHANGE_VOLUME);
-        assertThat(testBitcoinOverview.getRecentVariation()).isEqualTo(UPDATED_RECENT_VARIATION);
         assertThat(testBitcoinOverview.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
         assertThat(testBitcoinOverview.getCurrency()).isEqualTo(UPDATED_CURRENCY);
+        assertThat(testBitcoinOverview.getVolumeChange24h()).isEqualTo(UPDATED_VOLUME_CHANGE_24_H);
+        assertThat(testBitcoinOverview.getPercentChange1h()).isEqualTo(UPDATED_PERCENT_CHANGE_1_H);
+        assertThat(testBitcoinOverview.getPercentChange24h()).isEqualTo(UPDATED_PERCENT_CHANGE_24_H);
+        assertThat(testBitcoinOverview.getPercentChange7d()).isEqualTo(UPDATED_PERCENT_CHANGE_7_D);
+        assertThat(testBitcoinOverview.getPercentChange30d()).isEqualTo(UPDATED_PERCENT_CHANGE_30_D);
+        assertThat(testBitcoinOverview.getPercentChange60d()).isEqualTo(UPDATED_PERCENT_CHANGE_60_D);
+        assertThat(testBitcoinOverview.getPercentChange90d()).isEqualTo(UPDATED_PERCENT_CHANGE_90_D);
     }
 
     @Test
@@ -305,7 +365,12 @@ class BitcoinOverviewResourceIT {
         BitcoinOverview partialUpdatedBitcoinOverview = new BitcoinOverview();
         partialUpdatedBitcoinOverview.setId(bitcoinOverview.getId());
 
-        partialUpdatedBitcoinOverview.marketCap(UPDATED_MARKET_CAP).exchangeVolume(UPDATED_EXCHANGE_VOLUME).currency(UPDATED_CURRENCY);
+        partialUpdatedBitcoinOverview
+            .marketCap(UPDATED_MARKET_CAP)
+            .exchangeVolume(UPDATED_EXCHANGE_VOLUME)
+            .volumeChange24h(UPDATED_VOLUME_CHANGE_24_H)
+            .percentChange60d(UPDATED_PERCENT_CHANGE_60_D)
+            .percentChange90d(UPDATED_PERCENT_CHANGE_90_D);
 
         restBitcoinOverviewMockMvc
             .perform(
@@ -322,9 +387,15 @@ class BitcoinOverviewResourceIT {
         assertThat(testBitcoinOverview.getBitcoinPrice()).isEqualTo(DEFAULT_BITCOIN_PRICE);
         assertThat(testBitcoinOverview.getMarketCap()).isEqualTo(UPDATED_MARKET_CAP);
         assertThat(testBitcoinOverview.getExchangeVolume()).isEqualTo(UPDATED_EXCHANGE_VOLUME);
-        assertThat(testBitcoinOverview.getRecentVariation()).isEqualTo(DEFAULT_RECENT_VARIATION);
         assertThat(testBitcoinOverview.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
-        assertThat(testBitcoinOverview.getCurrency()).isEqualTo(UPDATED_CURRENCY);
+        assertThat(testBitcoinOverview.getCurrency()).isEqualTo(DEFAULT_CURRENCY);
+        assertThat(testBitcoinOverview.getVolumeChange24h()).isEqualTo(UPDATED_VOLUME_CHANGE_24_H);
+        assertThat(testBitcoinOverview.getPercentChange1h()).isEqualTo(DEFAULT_PERCENT_CHANGE_1_H);
+        assertThat(testBitcoinOverview.getPercentChange24h()).isEqualTo(DEFAULT_PERCENT_CHANGE_24_H);
+        assertThat(testBitcoinOverview.getPercentChange7d()).isEqualTo(DEFAULT_PERCENT_CHANGE_7_D);
+        assertThat(testBitcoinOverview.getPercentChange30d()).isEqualTo(DEFAULT_PERCENT_CHANGE_30_D);
+        assertThat(testBitcoinOverview.getPercentChange60d()).isEqualTo(UPDATED_PERCENT_CHANGE_60_D);
+        assertThat(testBitcoinOverview.getPercentChange90d()).isEqualTo(UPDATED_PERCENT_CHANGE_90_D);
     }
 
     @Test
@@ -343,9 +414,15 @@ class BitcoinOverviewResourceIT {
             .bitcoinPrice(UPDATED_BITCOIN_PRICE)
             .marketCap(UPDATED_MARKET_CAP)
             .exchangeVolume(UPDATED_EXCHANGE_VOLUME)
-            .recentVariation(UPDATED_RECENT_VARIATION)
             .timestamp(UPDATED_TIMESTAMP)
-            .currency(UPDATED_CURRENCY);
+            .currency(UPDATED_CURRENCY)
+            .volumeChange24h(UPDATED_VOLUME_CHANGE_24_H)
+            .percentChange1h(UPDATED_PERCENT_CHANGE_1_H)
+            .percentChange24h(UPDATED_PERCENT_CHANGE_24_H)
+            .percentChange7d(UPDATED_PERCENT_CHANGE_7_D)
+            .percentChange30d(UPDATED_PERCENT_CHANGE_30_D)
+            .percentChange60d(UPDATED_PERCENT_CHANGE_60_D)
+            .percentChange90d(UPDATED_PERCENT_CHANGE_90_D);
 
         restBitcoinOverviewMockMvc
             .perform(
@@ -362,9 +439,15 @@ class BitcoinOverviewResourceIT {
         assertThat(testBitcoinOverview.getBitcoinPrice()).isEqualTo(UPDATED_BITCOIN_PRICE);
         assertThat(testBitcoinOverview.getMarketCap()).isEqualTo(UPDATED_MARKET_CAP);
         assertThat(testBitcoinOverview.getExchangeVolume()).isEqualTo(UPDATED_EXCHANGE_VOLUME);
-        assertThat(testBitcoinOverview.getRecentVariation()).isEqualTo(UPDATED_RECENT_VARIATION);
         assertThat(testBitcoinOverview.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
         assertThat(testBitcoinOverview.getCurrency()).isEqualTo(UPDATED_CURRENCY);
+        assertThat(testBitcoinOverview.getVolumeChange24h()).isEqualTo(UPDATED_VOLUME_CHANGE_24_H);
+        assertThat(testBitcoinOverview.getPercentChange1h()).isEqualTo(UPDATED_PERCENT_CHANGE_1_H);
+        assertThat(testBitcoinOverview.getPercentChange24h()).isEqualTo(UPDATED_PERCENT_CHANGE_24_H);
+        assertThat(testBitcoinOverview.getPercentChange7d()).isEqualTo(UPDATED_PERCENT_CHANGE_7_D);
+        assertThat(testBitcoinOverview.getPercentChange30d()).isEqualTo(UPDATED_PERCENT_CHANGE_30_D);
+        assertThat(testBitcoinOverview.getPercentChange60d()).isEqualTo(UPDATED_PERCENT_CHANGE_60_D);
+        assertThat(testBitcoinOverview.getPercentChange90d()).isEqualTo(UPDATED_PERCENT_CHANGE_90_D);
     }
 
     @Test

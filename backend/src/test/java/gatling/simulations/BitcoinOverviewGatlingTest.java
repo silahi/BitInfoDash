@@ -80,9 +80,15 @@ public class BitcoinOverviewGatlingTest extends Simulation {
                                 "\"bitcoinPrice\": 0" +
                                 ", \"marketCap\": 0" +
                                 ", \"exchangeVolume\": 0" +
-                                ", \"recentVariation\": 0" +
                                 ", \"timestamp\": \"2020-01-01T00:00:00.000Z\"" +
                                 ", \"currency\": \"SAMPLE_TEXT\"" +
+                                ", \"volumeChange24h\": 0" +
+                                ", \"percentChange1h\": 0" +
+                                ", \"percentChange24h\": 0" +
+                                ", \"percentChange7d\": 0" +
+                                ", \"percentChange30d\": 0" +
+                                ", \"percentChange60d\": 0" +
+                                ", \"percentChange90d\": 0" +
                                 "}"
                             )
                         )
