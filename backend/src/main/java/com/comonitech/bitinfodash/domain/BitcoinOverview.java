@@ -39,7 +39,7 @@ public class BitcoinOverview implements Serializable {
     private Instant timestamp;
 
     @Column(name = "currency")
-    private String currency;
+    private String currency = "USD";
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
