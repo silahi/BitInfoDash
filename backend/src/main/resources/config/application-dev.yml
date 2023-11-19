@@ -102,4 +102,8 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+# application api properties
+coinmarketcap:
+  apiKey: 8a181f99-ee78-4696-9082-ab3fa70e6547
+  apiUrl: https://pro-api.coinmarketcap.com/v1
+  symbol: BTC
