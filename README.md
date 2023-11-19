@@ -37,11 +37,19 @@ Ce guide va vous aider à configurer et exécuter BitInfoDash localement. Ce tab
 
 [PostgreSQL](https://www.postgresql.org/) est choisi comme système de gestion de base de données en raison de sa stabilité, de sa flexibilité, et de sa compatibilité avec Spring Boot. Il stockera les données nécessaires pour le tableau de bord, notamment les informations sur les transactions, les adresses Bitcoin, etc.
 
-### Frontend (Angular)
+### Frontend (Angular, Nx, Tailwind CSS)
 
 #### 1. Angular
 
 [Angular](https://angular.io/) est le framework frontend choisi pour son approche modulaire et sa robustesse. Il offre une structure bien définie pour organiser le code, facilite la création d'interfaces utilisateur réactives, et permet l'utilisation de bibliothèques tierces pour les graphiques interactifs.
+
+#### 2. Nx
+
+[Nx](https://nx.dev/) est utilisé comme outil pour la gestion de monorepos. Il facilite le développement, le test, et le déploiement d'applications basées sur Angular.
+
+#### 3. Tailwind CSS
+
+[Tailwind CSS](https://tailwindcss.com/) est intégré pour simplifier le développement du frontend. Il offre une approche utilitaire-first pour la création de styles, ce qui facilite la personnalisation et la maintenance du design.
 
 ## Structure du Projet
 
@@ -49,7 +57,7 @@ Le projet BitInfoDash est organisé en deux dossiers principaux :
 
 1. **backend** : Contient le code source du backend, développé avec JHipster qui repose sur Spring Boot.
    
-2. **frontend** : Contient le code source du frontend, développé avec Angular.
+2. **frontend** : Contient le code source du frontend, développé avec Angular, Nx, et utilisant Tailwind CSS.
 
 3. **docker-compose.yml** : Fichier pour pour la configuration de la base de données PostgreSQL.
 
@@ -138,24 +146,16 @@ L'application backend sera démarrée et sera accessible à l'adresse [http://lo
 
 2. Assurez-vous que vous avez [Node.js](https://nodejs.org/) installé sur votre machine.
 
-3. Exécutez la commande suivante pour installer Angular CLI (Command-Line Interface) :
-
-    ```bash
-    npm install -g @angular/cli
-    ```
-
-   Cette étape nécessite une connexion Internet, car elle téléchargera et installera les packages nécessaires.
-
-4. Une fois l'installation terminée, exécutez la commande suivante pour installer les dépendances du projet :
+3. Exécutez la commande suivante pour installer les dépendances du projet :
 
     ```bash
     npm install
     ```
 
-5. Exécutez la commande suivante pour démarrer l'application Angular :
+5. Exécutez la commande suivante pour démarrer l'application :
 
     ```bash
-    ng serve
+    npx nx serve
     ```
 
 L'application frontend sera démarrée et sera accessible à l'adresse [http://localhost:4200](http://localhost:4200).
