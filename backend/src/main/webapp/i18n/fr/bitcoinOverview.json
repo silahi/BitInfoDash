@@ -21,9 +21,15 @@
       "bitcoinPrice": "Bitcoin Price",
       "marketCap": "Market Cap",
       "exchangeVolume": "Exchange Volume",
-      "recentVariation": "Recent Variation",
       "timestamp": "Timestamp",
-      "currency": "Currency"
+      "currency": "Currency",
+      "volumeChange24h": "Volume Change 24 H",
+      "percentChange1h": "Percent Change 1 H",
+      "percentChange24h": "Percent Change 24 H",
+      "percentChange7d": "Percent Change 7 D",
+      "percentChange30d": "Percent Change 30 D",
+      "percentChange60d": "Percent Change 60 D",
+      "percentChange90d": "Percent Change 90 D"
     }
   }
 }

@@ -56,12 +56,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="recentVariation">
-            <div class="d-flex">
-              <span jhiTranslate="bitinfodashApp.bitcoinOverview.recentVariation">Recent Variation</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="timestamp">
             <div class="d-flex">
               <span jhiTranslate="bitinfodashApp.bitcoinOverview.timestamp">Timestamp</span>
@@ -71,6 +65,48 @@
           <th scope="col" jhiSortBy="currency">
             <div class="d-flex">
               <span jhiTranslate="bitinfodashApp.bitcoinOverview.currency">Currency</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="volumeChange24h">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.volumeChange24h">Volume Change 24 H</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="percentChange1h">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.percentChange1h">Percent Change 1 H</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="percentChange24h">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.percentChange24h">Percent Change 24 H</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="percentChange7d">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.percentChange7d">Percent Change 7 D</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="percentChange30d">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.percentChange30d">Percent Change 30 D</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="percentChange60d">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.percentChange60d">Percent Change 60 D</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="percentChange90d">
+            <div class="d-flex">
+              <span jhiTranslate="bitinfodashApp.bitcoinOverview.percentChange90d">Percent Change 90 D</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -85,9 +121,15 @@
           <td>{{ bitcoinOverview.bitcoinPrice }}</td>
           <td>{{ bitcoinOverview.marketCap }}</td>
           <td>{{ bitcoinOverview.exchangeVolume }}</td>
-          <td>{{ bitcoinOverview.recentVariation }}</td>
           <td>{{ bitcoinOverview.timestamp | formatMediumDatetime }}</td>
           <td>{{ bitcoinOverview.currency }}</td>
+          <td>{{ bitcoinOverview.volumeChange24h }}</td>
+          <td>{{ bitcoinOverview.percentChange1h }}</td>
+          <td>{{ bitcoinOverview.percentChange24h }}</td>
+          <td>{{ bitcoinOverview.percentChange7d }}</td>
+          <td>{{ bitcoinOverview.percentChange30d }}</td>
+          <td>{{ bitcoinOverview.percentChange60d }}</td>
+          <td>{{ bitcoinOverview.percentChange90d }}</td>
           <td class="text-end">
             <div class="btn-group">
               <a [routerLink]="['/bitcoin-overview', bitcoinOverview.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

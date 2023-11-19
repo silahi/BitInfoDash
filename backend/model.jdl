@@ -2,9 +2,15 @@
   bitcoinPrice Double
   marketCap Double
   exchangeVolume Double
-  recentVariation Double
   timestamp Instant
   currency String
+  volumeChange24h Double
+  percentChange1h Double
+  percentChange24h Double
+  percentChange7d Double
+  percentChange30d Double
+  percentChange60d Double
+  percentChange90d Double
 }
 
 entity BlockchainAnalytics {

@@ -32,14 +32,32 @@ public class BitcoinOverview implements Serializable {
     @Column(name = "exchange_volume")
     private Double exchangeVolume;
 
-    @Column(name = "recent_variation")
-    private Double recentVariation;
-
     @Column(name = "timestamp")
     private Instant timestamp;
 
     @Column(name = "currency")
-    private String currency;
+    private String currency = "USD";
+
+    @Column(name = "volume_change_24_h")
+    private Double volumeChange24h;
+
+    @Column(name = "percent_change_1_h")
+    private Double percentChange1h;
+
+    @Column(name = "percent_change_24_h")
+    private Double percentChange24h;
+
+    @Column(name = "percent_change_7_d")
+    private Double percentChange7d;
+
+    @Column(name = "percent_change_30_d")
+    private Double percentChange30d;
+
+    @Column(name = "percent_change_60_d")
+    private Double percentChange60d;
+
+    @Column(name = "percent_change_90_d")
+    private Double percentChange90d;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -95,19 +113,6 @@ public class BitcoinOverview implements Serializable {
         this.exchangeVolume = exchangeVolume;
     }
 
-    public Double getRecentVariation() {
-        return this.recentVariation;
-    }
-
-    public BitcoinOverview recentVariation(Double recentVariation) {
-        this.setRecentVariation(recentVariation);
-        return this;
-    }
-
-    public void setRecentVariation(Double recentVariation) {
-        this.recentVariation = recentVariation;
-    }
-
     public Instant getTimestamp() {
         return this.timestamp;
     }
@@ -132,6 +137,97 @@ public class BitcoinOverview implements Serializable {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public Double getVolumeChange24h() {
+        return this.volumeChange24h;
+    }
+
+    public BitcoinOverview volumeChange24h(Double volumeChange24h) {
+        this.setVolumeChange24h(volumeChange24h);
+        return this;
+    }
+
+    public void setVolumeChange24h(Double volumeChange24h) {
+        this.volumeChange24h = volumeChange24h;
+    }
+
+    public Double getPercentChange1h() {
+        return this.percentChange1h;
+    }
+
+    public BitcoinOverview percentChange1h(Double percentChange1h) {
+        this.setPercentChange1h(percentChange1h);
+        return this;
+    }
+
+    public void setPercentChange1h(Double percentChange1h) {
+        this.percentChange1h = percentChange1h;
+    }
+
+    public Double getPercentChange24h() {
+        return this.percentChange24h;
+    }
+
+    public BitcoinOverview percentChange24h(Double percentChange24h) {
+        this.setPercentChange24h(percentChange24h);
+        return this;
+    }
+
+    public void setPercentChange24h(Double percentChange24h) {
+        this.percentChange24h = percentChange24h;
+    }
+
+    public Double getPercentChange7d() {
+        return this.percentChange7d;
+    }
+
+    public BitcoinOverview percentChange7d(Double percentChange7d) {
+        this.setPercentChange7d(percentChange7d);
+        return this;
+    }
+
+    public void setPercentChange7d(Double percentChange7d) {
+        this.percentChange7d = percentChange7d;
+    }
+
+    public Double getPercentChange30d() {
+        return this.percentChange30d;
+    }
+
+    public BitcoinOverview percentChange30d(Double percentChange30d) {
+        this.setPercentChange30d(percentChange30d);
+        return this;
+    }
+
+    public void setPercentChange30d(Double percentChange30d) {
+        this.percentChange30d = percentChange30d;
+    }
+
+    public Double getPercentChange60d() {
+        return this.percentChange60d;
+    }
+
+    public BitcoinOverview percentChange60d(Double percentChange60d) {
+        this.setPercentChange60d(percentChange60d);
+        return this;
+    }
+
+    public void setPercentChange60d(Double percentChange60d) {
+        this.percentChange60d = percentChange60d;
+    }
+
+    public Double getPercentChange90d() {
+        return this.percentChange90d;
+    }
+
+    public BitcoinOverview percentChange90d(Double percentChange90d) {
+        this.setPercentChange90d(percentChange90d);
+        return this;
+    }
+
+    public void setPercentChange90d(Double percentChange90d) {
+        this.percentChange90d = percentChange90d;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -161,9 +257,15 @@ public class BitcoinOverview implements Serializable {
             ", bitcoinPrice=" + getBitcoinPrice() +
             ", marketCap=" + getMarketCap() +
             ", exchangeVolume=" + getExchangeVolume() +
-            ", recentVariation=" + getRecentVariation() +
             ", timestamp='" + getTimestamp() + "'" +
             ", currency='" + getCurrency() + "'" +
+            ", volumeChange24h=" + getVolumeChange24h() +
+            ", percentChange1h=" + getPercentChange1h() +
+            ", percentChange24h=" + getPercentChange24h() +
+            ", percentChange7d=" + getPercentChange7d() +
+            ", percentChange30d=" + getPercentChange30d() +
+            ", percentChange60d=" + getPercentChange60d() +
+            ", percentChange90d=" + getPercentChange90d() +
             "}";
     }
 }

@@ -34,9 +34,15 @@ type BitcoinOverviewFormGroupContent = {
   bitcoinPrice: FormControl<BitcoinOverviewFormRawValue['bitcoinPrice']>;
   marketCap: FormControl<BitcoinOverviewFormRawValue['marketCap']>;
   exchangeVolume: FormControl<BitcoinOverviewFormRawValue['exchangeVolume']>;
-  recentVariation: FormControl<BitcoinOverviewFormRawValue['recentVariation']>;
   timestamp: FormControl<BitcoinOverviewFormRawValue['timestamp']>;
   currency: FormControl<BitcoinOverviewFormRawValue['currency']>;
+  volumeChange24h: FormControl<BitcoinOverviewFormRawValue['volumeChange24h']>;
+  percentChange1h: FormControl<BitcoinOverviewFormRawValue['percentChange1h']>;
+  percentChange24h: FormControl<BitcoinOverviewFormRawValue['percentChange24h']>;
+  percentChange7d: FormControl<BitcoinOverviewFormRawValue['percentChange7d']>;
+  percentChange30d: FormControl<BitcoinOverviewFormRawValue['percentChange30d']>;
+  percentChange60d: FormControl<BitcoinOverviewFormRawValue['percentChange60d']>;
+  percentChange90d: FormControl<BitcoinOverviewFormRawValue['percentChange90d']>;
 };
 
 export type BitcoinOverviewFormGroup = FormGroup<BitcoinOverviewFormGroupContent>;
@@ -59,9 +65,15 @@ export class BitcoinOverviewFormService {
       bitcoinPrice: new FormControl(bitcoinOverviewRawValue.bitcoinPrice),
       marketCap: new FormControl(bitcoinOverviewRawValue.marketCap),
       exchangeVolume: new FormControl(bitcoinOverviewRawValue.exchangeVolume),
-      recentVariation: new FormControl(bitcoinOverviewRawValue.recentVariation),
       timestamp: new FormControl(bitcoinOverviewRawValue.timestamp),
       currency: new FormControl(bitcoinOverviewRawValue.currency),
+      volumeChange24h: new FormControl(bitcoinOverviewRawValue.volumeChange24h),
+      percentChange1h: new FormControl(bitcoinOverviewRawValue.percentChange1h),
+      percentChange24h: new FormControl(bitcoinOverviewRawValue.percentChange24h),
+      percentChange7d: new FormControl(bitcoinOverviewRawValue.percentChange7d),
+      percentChange30d: new FormControl(bitcoinOverviewRawValue.percentChange30d),
+      percentChange60d: new FormControl(bitcoinOverviewRawValue.percentChange60d),
+      percentChange90d: new FormControl(bitcoinOverviewRawValue.percentChange90d),
     });
   }
 
