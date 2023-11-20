@@ -1,0 +1,32 @@
+<nav class="p-2 border border-slate-300">
+    <div class="container mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <button routerLink="/">
+            <img src="../../assets/images/logo-bit-info-dash.png" alt="Logo" class="h-12 w-auto">
+        </button>
+
+        <!-- Menu-->
+        <div class="flex space-x-4 flex-grow justify-center">
+            <button routerLink="/bitcoin-overview"
+                class="bg-secondary p-2 rounded-lg text-white  hover:bg-primary-60 font-semibold">Vue d'ensemble</button>
+            <button routerLink="/address-tracking" class="hover:bg-secondary rounded-lg p-2 font-normal">Suivi des
+                Adresses</button>
+            <button routerLink="/blockchain-analysis"
+                class="hover:bg-secondary rounded-lg p-2 font-normal">Analyse</button>
+            <button routerLink="/market-trends" class="hover:bg-secondary rounded-lg p-2 font-normal">Tendances</button>
+            <button routerLink="/network-security" class="hover:bg-secondary rounded-lg p-2 font-normal">Sécurité du
+                Réseau</button>
+        </div>
+
+        <!-- Boutons -->
+        <div class="flex items-center space-x-4">
+            <button class="p-2">
+                <fa-icon [icon]="faBell"></fa-icon>
+            </button>
+
+            <button class="p-2">
+                <fa-icon [icon]="faUser"></fa-icon>
+            </button>
+        </div>
+    </div>
+</nav>
