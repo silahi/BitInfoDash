@@ -17,6 +17,9 @@
     "paths": {
       "@bit-info-dash/bitcoin-overview": [
         "modules/bitcoin-overview/src/index.ts"
+      ],
+      "@bit-info-dash/blockchain-analysis": [
+        "modules/blockchain-analysis/src/index.ts"
       ]
     }
   },

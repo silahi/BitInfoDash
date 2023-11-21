@@ -1,0 +1,45 @@
+{
+  "name": "blockchain-analysis",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "modules/blockchain-analysis/src",
+  "prefix": "bit-info-dash",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "modules/blockchain-analysis/ng-package.json",
+        "tailwindConfig": "modules/blockchain-analysis/tailwind.config.js"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "modules/blockchain-analysis/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "modules/blockchain-analysis/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "modules/blockchain-analysis/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "modules/blockchain-analysis/**/*.ts",
+          "modules/blockchain-analysis/**/*.html",
+          "modules/blockchain-analysis/package.json"
+        ]
+      }
+    }
+  }
+}
