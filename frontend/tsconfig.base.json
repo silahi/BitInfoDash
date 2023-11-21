@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@bit-info-dash/address-tracking": [
+        "modules/address-tracking/src/index.ts"
+      ],
       "@bit-info-dash/bitcoin-overview": [
         "modules/bitcoin-overview/src/index.ts"
       ],
