@@ -24,7 +24,10 @@
       "@bit-info-dash/blockchain-analysis": [
         "modules/blockchain-analysis/src/index.ts"
       ],
-      "@bit-info-dash/market-trends": ["modules/market-trends/src/index.ts"]
+      "@bit-info-dash/market-trends": ["modules/market-trends/src/index.ts"],
+      "@bit-info-dash/network-security": [
+        "modules/network-security/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
