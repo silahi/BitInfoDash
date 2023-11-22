@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CryptoData } from '../shared/models/crypto-data.model';
+import { CommonModule } from '@angular/common'; 
 @Component({
   selector: 'bit-info-dash-bitcoin-overview',
   standalone: true,
@@ -9,8 +8,7 @@ import { CryptoData } from '../shared/models/crypto-data.model';
   styleUrls: ['./bitcoin-overview.component.css'],
 })
 
-export class BitcoinOverviewComponent implements OnInit {
-  cryptoData!: CryptoData;
+export class BitcoinOverviewComponent implements OnInit { 
 
   constructor() { }
 

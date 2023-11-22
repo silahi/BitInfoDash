@@ -5,7 +5,5 @@ import { CommonModule } from '@angular/common';
   selector: 'bit-info-dash-shared',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './shared.component.html',
-  styleUrls: ['./shared.component.css'],
 })
 export class SharedComponent {}
