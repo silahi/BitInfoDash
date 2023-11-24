@@ -28,7 +28,7 @@ export class SharedService {
         return this.httpClient.post(url, credentials);
     }
 
-    public getWithToken(endpoint: string, token: string): Observable<any> {
+    public getWithToken(endpoint: string, token: string | undefined): Observable<any> {
         const url = `${API_URL}${endpoint}`;
         const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
