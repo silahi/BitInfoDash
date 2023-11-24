@@ -9,7 +9,8 @@ import { Component, Input } from '@angular/core';
 })
 export class BitcoinInfoComponent {
   @Input() title: string | undefined;
-  @Input() amount: number | undefined;
+  @Input() amount !: number | 0.00;
   @Input() variation !: number | 0.00;
-  @Input() icon: any;
+  @Input() src: string | undefined;
+  @Input() alt: string | undefined;
 }
