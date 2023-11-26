@@ -21,8 +21,9 @@ export class BitcoinOverviewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.setToken();
-    this.fetchOverviewData();
+    this.setToken().then(() => {
+      this.fetchOverviewData();
+    }); 
   }
 
   private fetchOverviewData(): void {
@@ -32,7 +33,7 @@ export class BitcoinOverviewComponent implements OnInit {
     })
   }
 
-  private setToken(): void {
+  private async setToken(): Promise<void> {
     const token = this.sharedService.getToken();
     if (!token) {
       const credentials = { "username": "user", "password": "user", "rememberMe": true };

@@ -13,4 +13,8 @@ export class BitcoinInfoComponent {
   @Input() variation !: number | 0.00;
   @Input() src: string | undefined;
   @Input() alt: string | undefined;
+
+  getVariationColorClass(): string {
+    return this.variation >= 0 ? 'text-green-500' : 'text-red-500';
+  }
 }

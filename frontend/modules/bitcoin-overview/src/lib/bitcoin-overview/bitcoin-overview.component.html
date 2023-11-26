@@ -1,13 +1,13 @@
 <header class="bg-white shadow">
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div *ngIf="bitcoinData">
             <div
-                class="bg-slate-50 p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-3 gap-4 text-sm leading-6">
+                class="p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-3 gap-4 text-sm leading-6">
                 <bit-info-dash-bitcoin-info title="Prix du Bitcoin" src="../../assets/images/price.png"
                     [amount]="bitcoinData.bitcoinPrice" [variation]="bitcoinData.percentChange24h" />
                 <bit-info-dash-bitcoin-info title="Volume d'échange" src="../../assets/images/volume.png"
                     [amount]="bitcoinData.exchangeVolume" [variation]="bitcoinData.volumeChange24h" />
-                <bit-info-dash-bitcoin-info title="Capitalisation Boursiere" src="../../assets/images/cap.png"
+                <bit-info-dash-bitcoin-info title="Capitalisation Boursière" src="../../assets/images/cap.png"
                     [amount]="bitcoinData.marketCap" [variation]="bitcoinData.percentChange1h" />
             </div>
         </div>
