@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs'; 
 
 const TOKEN_KEY = "Token-bit-info-dash";
 const API_URL = environment.apiUrl;
@@ -10,7 +10,7 @@ const API_URL = environment.apiUrl;
 @Injectable({
     providedIn: 'root'
 })
-export class SharedService {
+export class SharedService { 
 
     constructor(private cookieService: CookieService, private httpClient: HttpClient) { }
 
