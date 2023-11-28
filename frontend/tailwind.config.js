@@ -9,6 +9,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['Source Serif Pro', 'Georgia', 'serif'],
+        body: ['Synonym', 'system-ui', 'sans-serif'],
+      },
       colors: {
         primary: {
           100: '#51b5a3',
@@ -23,5 +27,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 };
