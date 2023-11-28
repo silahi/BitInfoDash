@@ -42,7 +42,7 @@ export class BitcoinOverviewComponent implements OnInit {
           this.sharedService.setTokenInCookie(response.id_token);
         },
         error: (error) => {
-          console.error('Authentication error:', error);
+          console.error('Authentication error:', error.httpErrorResponse.message);
         }
       });
     }

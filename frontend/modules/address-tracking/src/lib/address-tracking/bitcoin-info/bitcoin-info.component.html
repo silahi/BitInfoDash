@@ -1,0 +1,42 @@
+<div class="py-8 px-8 hover:border-cyan-500 hover:border-solid hover:text-blue-500 bg-white  max-w-sm mx-auto
+    rounded-xl border shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+    <div class="text-center space-y-2 sm:text-left">
+        <div class="space-y-0.5">
+            <p class="text-black">
+                {{label}}
+            </p>
+            <div class="text-lg font-semibold text-gray-600">
+                {{balance}} BTC
+            </div>
+        </div>
+        <div class="grid grid-flow-col justify-stretch">
+
+
+            <div class="flex flex-row justify-center items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#c78851" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25" />
+                  </svg>
+                  
+                  
+                {{confirmedTx + unConfirmedTx }}
+            </div>
+
+            <div class="flex flex-row justify-center items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="green" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                
+                  
+                {{confirmedTx}}
+            </div>
+            <div class="flex flex-row justify-center items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#51b5a3" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                  </svg>
+                {{unConfirmedTx}} 
+            </div>
+
+            
+        </div>
+    </div>
+</div>
