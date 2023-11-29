@@ -32,8 +32,7 @@
                 </div>
                 <div class="relative mt-16 h-80 lg:mt-8">
                     <img class="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-                        src="./assets/images/CTA.png"
-                        alt="App screenshot" width="1824" height="1080">
+                        src="./assets/images/CTA.png" alt="App screenshot" width="1824" height="1080">
                 </div>
             </div>
         </div>
@@ -49,8 +48,7 @@
             <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" />
         </svg>
-        <input #filterInput
-        (focus)="openModal()"
+        <input #filterInput (focus)="openModal()"
             class="focus:ring-2 ring-primary-60 focus:ring-secondary focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm"
             type="text" aria-label="Filter projects" placeholder="Rechercher une adresse...">
     </form>
@@ -60,7 +58,7 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
             class="p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-3 gap-4 text-sm leading-6">
-            <button *ngFor="let address of  addresses">
+            <button *ngFor="let address of  addresses" (click)="detail(address.address)">
                 <bit-info-dash-bitcoin-info [unConfirmedTx]="address.unconfirmedTransactionCount"
                     [confirmedTx]="address.confirmedTransactionCount" [label]="address.label"
                     [balance]="address.balance" [received]="address.amountReceived" [sent]="address.amountSent" />
@@ -68,11 +66,50 @@
         </div>
     </div>
 </div>
+<div *ngIf="addressTransactions.length > 0">
+    <div class=" h-80 mx-auto overflow-auto">
+        <table class="min-w-full bg-white border border-gray-300">
+            <thead>
+                <tr >
+                    <th class="border-b    text-gray-600 font-semibold p-4">ID</th>
+                    <th class="border-b    text-gray-600 font-semibold p-4">Statut</th>
+                    <th class="border-b    text-gray-600 font-semibold p-4">Montant</th>
+                    <th class="border-b    text-gray-600 font-semibold p-4">Type</th>
+                    <th class="border-b    text-gray-600 font-semibold p-4">Frais</th>
+                    <th class="border-b    text-gray-600 font-semibold p-4">Confirmations</th>
+                    <th class="border-b    text-gray-600 font-semibold p-4">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transaction of addressTransactions">
+                    <td class="border-b p-4">{{ transaction.txid | slice:0:10 }}...</td>
+                    <td class="border-b p-4">
+                        <span *ngIf="transaction.status.confirmed; else unconfirmed">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
+                                stroke="green" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </span>
+                        <ng-template #unconfirmed>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="#51b5a3" class="w-8 h-8">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                            </svg>
+                        </ng-template>
+                    </td>
+                    <td class="border-b p-4">{{ transaction.amount }}</td>
+                    <td class="border-b p-4">{{ transaction.type }}</td>
+                    <td class="border-b p-4">{{ transaction.fee }}</td>
+                    <td class="border-b p-4">{{ transaction.confirmations }}</td>
+                    <td class="border-b p-4">{{ transaction.datetime | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-
-
-
-
+</div>
 
 
 <!--Dialog-->

@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SessionStorageService } from 'ngx-webstorage';
 import { BitcoinInfoComponent } from './bitcoin-info/bitcoin-info.component';
-import { MempoolAddress, mapResponseToMempoolAddress } from './service/address.model';
+import { MempoolAddress, MempoolTransaction, mapResponseToCustomTransactions, mapResponseToMempoolAddress } from './service/address.model';
 import { MempoolService } from './service/mempool.service';
 
 const ADDRESSES_SESSION_KEY = "addresses";
@@ -21,6 +21,7 @@ export class AddressTrackingComponent implements OnInit {
   label: string = '';
   address: string = '';
   addresses: MempoolAddress[] = [];
+  addressTransactions: MempoolTransaction[] = [];
   addressInfo: any;
 
   currentAddress: string = "";
@@ -29,14 +30,23 @@ export class AddressTrackingComponent implements OnInit {
     this.currentAddress = saddress;
   }
 
-  detail() {
-
+  detail(selectedAddress: string) {
+    this.mempoolService.getTransactions(selectedAddress).subscribe({
+      next: (mempoolResponse) => {
+        const transactions = mapResponseToCustomTransactions(mempoolResponse);
+        this.addressTransactions = transactions;
+      },
+      error: (error) => {
+        alert("Ce n'est pas une adresse bitcoin valide !");
+        console.error('Error fetching address information', error.httpErrorResponse.message);
+      }
+    });
   }
 
   private sessionService: SessionStorageService;
   private mempoolService: MempoolService
   buttonCoordinates: { top: number, left: number } = { top: 0, left: 0 };
-  cta = true;
+  cta = false;
 
   hideCTA() {
     this.cta = false;
@@ -65,7 +75,7 @@ export class AddressTrackingComponent implements OnInit {
         });
       });
       this.sessionService.store(ADDRESSES_SESSION_KEY, updatedAddresses);
-    }
+    } else this.cta = true;
   }
   showModal: boolean = false;
 
