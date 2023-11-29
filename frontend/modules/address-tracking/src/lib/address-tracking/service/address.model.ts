@@ -67,11 +67,29 @@ export interface MempoolTransaction {
     };
     fee: number;
     datetime: Date;
+    amount?: number;  
+    type?: 'sent' | 'received';  
+    confirmations?: number;  
 }
 
- 
 export function mapResponseToCustomTransactions(apiResponseTransactions: any[]): MempoolTransaction[] {
     return apiResponseTransactions.map(apiTransaction => {
+        // Calculate amount, type, and confirmations
+        let amount = 0;
+
+        for (const output of apiTransaction.vout) {
+            amount += output.value;
+        }
+
+        for (const input of apiTransaction.vin) {
+            if (input.prevout) {
+                amount -= input.prevout.value;
+            }
+        }
+
+        const transactionType: 'sent' | 'received' = amount > 0 ? 'received' : 'sent';
+        const confirmations = apiTransaction.status.confirmed ? apiTransaction.status.block_height : 0;
+
         return {
             txid: apiTransaction.txid,
             status: {
@@ -81,25 +99,12 @@ export function mapResponseToCustomTransactions(apiResponseTransactions: any[]):
                 block_time: apiTransaction.status.block_time,
             },
             fee: apiTransaction.fee,
-            datetime: new Date(apiTransaction.status.block_time * 1000),  
+            datetime: new Date(apiTransaction.status.block_time * 1000),
+            amount: Math.abs(amount),
+            type: transactionType,
+            confirmations: confirmations,
         };
     });
 }
-
  
-const apiResponseTransactions = [
-    {
-        txid: "3e6afd67862ce9fe3eb55268a3107f495415ff1b5d1933c928507e9bdf7a21e6",
-        status: {
-            confirmed: true,
-            block_height: 2091086,
-            block_hash: "00000000340f3667cce7032d084973ca29bdd0d858ec363ed894ad4c8ed09ebc",
-            block_time: 1630607773,
-        },
-        fee: 0,
-    },
-
-];
-
-const customTransactions: MempoolTransaction[] = mapResponseToCustomTransactions(apiResponseTransactions);
-console.log(customTransactions);
+ 
