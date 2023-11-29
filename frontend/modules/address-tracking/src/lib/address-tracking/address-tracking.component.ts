@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -7,6 +7,7 @@ import { SessionStorageService } from 'ngx-webstorage';
 import { BitcoinInfoComponent } from './bitcoin-info/bitcoin-info.component';
 import { MempoolAddress, MempoolTransaction, mapResponseToCustomTransactions, mapResponseToMempoolAddress } from './service/address.model';
 import { MempoolService } from './service/mempool.service';
+import { IChartApi, createChart } from 'lightweight-charts';
 
 const ADDRESSES_SESSION_KEY = "addresses";
 @Component({
@@ -25,22 +26,142 @@ export class AddressTrackingComponent implements OnInit {
   addressInfo: any;
 
   currentAddress: string = "";
+  showChart = false;
+  amountChart = true; 
+  feeChart = false;
+  confirmationChart = false;
+  metric = "amount";
+  chartTitle = "Montant";
+  chartData: MempoolTransaction[] = [];
+
+  @ViewChild('chartContainer') chartContainer!: ElementRef;
+  chart!: IChartApi;
 
   selectAddress(saddress: string) {
     this.currentAddress = saddress;
   }
 
+  getColorClass(classFor: boolean): string {
+    return classFor ? 'text-white bg-secondary' : 'text-slate-900 bg-white';
+  }
+
   detail(selectedAddress: string) {
+    this.showChart = true;
     this.mempoolService.getTransactions(selectedAddress).subscribe({
       next: (mempoolResponse) => {
         const transactions = mapResponseToCustomTransactions(mempoolResponse);
         this.addressTransactions = transactions;
+        this.chartData = transactions;
+        this.buildChart(transactions);
       },
       error: (error) => {
         alert("Ce n'est pas une adresse bitcoin valide !");
         console.error('Error fetching address information', error.httpErrorResponse.message);
       }
     });
+  }
+
+  chartFor(metric: string) {
+    if (metric === 'amount') {
+      this.amountChart = true; 
+      this.feeChart = false;
+      this.confirmationChart = false;
+      this.chartTitle = "du montant des transaction";
+    }
+
+    if (metric === 'fee') {
+      this.amountChart = false; 
+      this.feeChart = true;
+      this.confirmationChart = false;
+      this.chartTitle = "des frais de transactions";
+    }
+    if (metric === 'confirmation') {
+      this.amountChart = false; 
+      this.feeChart = false;
+      this.confirmationChart = true;
+      this.chartTitle = "du nombre de confirmations";
+    }
+
+    this.buildChart(this.chartData);
+  }
+
+  buildChart(data: any) {
+    var container = this.chartContainer.nativeElement;
+
+    const chartContainerElement: HTMLElement = this.chartContainer.nativeElement;
+    chartContainerElement.innerHTML = "";
+    const chartContainerWidth: number = chartContainerElement.offsetWidth;
+
+    var width = 97 * chartContainerWidth / 100;
+    var height = 300;
+
+    var chart = createChart(container, {
+      rightPriceScale: {
+        scaleMargins: {
+          top: 0.2,
+          bottom: 0.2,
+        },
+        borderVisible: false,
+      },
+      timeScale: {
+        borderVisible: false,
+      },
+      layout: {
+        background: { color: '#ffffff' },
+        textColor: '#333',
+      },
+      grid: {
+        horzLines: {
+          color: '#eee',
+        },
+        vertLines: {
+          color: '#ffffff',
+        },
+      },
+      crosshair: {
+        vertLine: {
+          labelVisible: false,
+        },
+      },
+    });
+
+    chart.resize(width, height);
+
+    var areaSeries = chart.addAreaSeries({
+      topColor: 'rgba(0, 150, 136, 0.56)',
+      bottomColor: 'rgba(0, 150, 136, 0.04)',
+      lineColor: 'rgba(0, 150, 136, 1)',
+      lineWidth: 2,
+      lastValueVisible: true, 
+    });
+
+    data.sort((a: any, b: any) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime());
+
+    if (this.amountChart) {
+      const amountData = data.map((item: any) => ({
+        time: new Date(item.datetime).getTime(),
+        value: item.amount,
+      }));
+      areaSeries.setData(amountData);
+    }
+
+    if (this.feeChart) {
+      const feesData = data.map((item: any) => ({
+        time: new Date(item.datetime).getTime(),
+        value: item.fee,
+      }));
+      areaSeries.setData(feesData);
+    }
+
+    if (this.confirmationChart) {
+      const confData = data.map((item: any) => ({
+        time: new Date(item.datetime).getTime(),
+        value: item.confirmations,
+      }));
+
+      areaSeries.setData(confData);
+    }
+
   }
 
   private sessionService: SessionStorageService;

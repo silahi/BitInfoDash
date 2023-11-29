@@ -54,6 +54,7 @@
     </form>
 </header>
 
+
 <div *ngIf="addresses.length > 0" class="bg-white  mb-4 shadow">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
@@ -66,50 +67,106 @@
         </div>
     </div>
 </div>
-<div *ngIf="addressTransactions.length > 0">
-    <div class=" h-80 mx-auto overflow-auto">
-        <table class="min-w-full bg-white border border-gray-300">
-            <thead>
-                <tr >
-                    <th class="border-b    text-gray-600 font-semibold p-4">ID</th>
-                    <th class="border-b    text-gray-600 font-semibold p-4">Statut</th>
-                    <th class="border-b    text-gray-600 font-semibold p-4">Montant</th>
-                    <th class="border-b    text-gray-600 font-semibold p-4">Type</th>
-                    <th class="border-b    text-gray-600 font-semibold p-4">Frais</th>
-                    <th class="border-b    text-gray-600 font-semibold p-4">Confirmations</th>
-                    <th class="border-b    text-gray-600 font-semibold p-4">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let transaction of addressTransactions">
-                    <td class="border-b p-4">{{ transaction.txid | slice:0:10 }}...</td>
-                    <td class="border-b p-4">
-                        <span *ngIf="transaction.status.confirmed; else unconfirmed">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
-                                stroke="green" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </span>
-                        <ng-template #unconfirmed>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="#51b5a3" class="w-8 h-8">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                            </svg>
-                        </ng-template>
-                    </td>
-                    <td class="border-b p-4">{{ transaction.amount }}</td>
-                    <td class="border-b p-4">{{ transaction.type }}</td>
-                    <td class="border-b p-4">{{ transaction.fee }}</td>
-                    <td class="border-b p-4">{{ transaction.confirmations }}</td>
-                    <td class="border-b p-4">{{ transaction.datetime | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
-                </tr>
-            </tbody>
-        </table>
+
+<div *ngIf="showChart" class="bg-white mb-4 shadow">
+    <div class="mx-auto max-w-7xl px-2 py-6 sm:px-2 lg:px-2">
+        <div class="flex">
+            <form class="flex-auto px-6 pt-6">
+                <div class="flex mb-2 flex-wrap">
+                    <h1 class="flex-auto text-lg font-semibold text-slate-600">
+                        Evolution {{chartTitle}}
+                    </h1>
+                </div>
+                <div class="flex space-x-4 text-sm font-medium">
+                    <div class="flex-auto flex space-x-4">
+                        <button [ngClass]="getColorClass(amountChart)"
+                            class="h-10 px-6 text-sm font-medium rounded-md border border-slate-200  "
+                            (click)="chartFor('amount')" type="submit">
+                            Montants
+                        </button>
+                        <button [ngClass]="getColorClass(confirmationChart)"
+                            class="h-10 px-6  rounded-md border border-slate-200 " (click)="chartFor('confirmation')"
+                            type="button">
+                            Confirmations
+                        </button>
+                        <button [ngClass]="getColorClass(feeChart)"
+                            class="h-10 px-6  rounded-md border border-slate-200 " (click)="chartFor('fee')"
+                            type="button">
+                            Frais
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div #chartContainer></div>
     </div>
 
 </div>
+
+<div *ngIf="addressTransactions.length > 0">
+    <div class="mx-auto max-w-7xl px-2 sm:px-2 lg:px-2">
+        <div class=" h-80 mx-auto overflow-auto">
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="border-b    text-gray-600 font-semibold p-4">ID</th>
+                        <th class="border-b    text-gray-600 font-semibold p-4">Statut</th>
+                        <th class="border-b    text-gray-600 font-semibold p-4">Montant</th>
+                        <th class="border-b    text-gray-600 font-semibold p-4">Type</th>
+                        <th class="border-b    text-gray-600 font-semibold p-4">Frais</th>
+                        <th class="border-b    text-gray-600 font-semibold p-4">Confirmations</th>
+                        <th class="border-b    text-gray-600 font-semibold p-4">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="center" *ngFor="let transaction of addressTransactions">
+                        <td class="border-b p-4">{{ transaction.txid | slice:0:10 }}...</td>
+                        <td class="border-b p-4">
+                            <span *ngIf="transaction.status.confirmed; else unconfirmed">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
+                                    stroke="green" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </span>
+                            <ng-template #unconfirmed>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                    stroke="#51b5a3" class="w-8 h-8">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                            </ng-template>
+                        </td>
+                        <td class="border-b p-4">{{ transaction.amount }}</td>
+                        <td class="border-b p-4">
+                            <nav title="Reçu" *ngIf="transaction.type =='received'">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="3" stroke="#c78851" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </nav>
+
+                            <nav title="Envoyé " *ngIf="transaction.type =='sent'">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="3" stroke="#51b5a3" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg> 
+                            </nav>
+
+                        </td>
+                        <td class="border-b p-4">{{ transaction.fee }}</td>
+                        <td class="border-b p-4">{{ transaction.confirmations }}</td>
+                        <td class="border-b p-4">{{ transaction.datetime | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
 
 
 <!--Dialog-->

@@ -58,7 +58,7 @@ export function mapResponseToMempoolAddress(response: MempoolApiResponse): Mempo
 
 
 export interface MempoolTransaction {
-    txid: string;
+    txid: string; 
     status: {
         confirmed: boolean;
         block_height?: number;
@@ -67,9 +67,9 @@ export interface MempoolTransaction {
     };
     fee: number;
     datetime: Date;
-    amount?: number;  
-    type?: 'sent' | 'received';  
-    confirmations?: number;  
+    amount?: number;
+    type?: 'sent' | 'received';
+    confirmations?: number;
 }
 
 export function mapResponseToCustomTransactions(apiResponseTransactions: any[]): MempoolTransaction[] {
@@ -87,7 +87,7 @@ export function mapResponseToCustomTransactions(apiResponseTransactions: any[]):
             }
         }
 
-        const transactionType: 'sent' | 'received' = amount > 0 ? 'received' : 'sent';
+        const transactionType: 'sent' | 'received' = amount > 0 ? 'sent' : 'received';
         const confirmations = apiTransaction.status.confirmed ? apiTransaction.status.block_height : 0;
 
         return {
@@ -99,12 +99,11 @@ export function mapResponseToCustomTransactions(apiResponseTransactions: any[]):
                 block_time: apiTransaction.status.block_time,
             },
             fee: apiTransaction.fee,
-            datetime: new Date(apiTransaction.status.block_time * 1000),
+            datetime: apiTransaction.status.block_time,
             amount: Math.abs(amount),
             type: transactionType,
             confirmations: confirmations,
         };
     });
 }
- 
- 
+
