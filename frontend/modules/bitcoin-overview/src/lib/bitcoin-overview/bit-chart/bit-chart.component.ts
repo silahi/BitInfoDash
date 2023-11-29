@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IChartApi, createChart } from 'lightweight-charts';
 import { SharedService } from '@bit-info-dash/shared';
-import moment from 'moment';
+import { KRANKEN_SYMBOLS, KrakenDataService, KrakenSymbol } from '../services/kraken-data.service';
 
 @Component({
   selector: 'bit-info-dash-bit-chart',
@@ -11,19 +11,33 @@ import moment from 'moment';
   templateUrl: './bit-chart.component.html',
 })
 export class BitChartComponent implements AfterViewInit {
-  constructor(private sharedService: SharedService) { }
-  ngAfterViewInit(): void { 
+  constructor(private sharedService: SharedService, private krakenService: KrakenDataService) { }
+
+  ngAfterViewInit(): void {
     this.myChart();
   }
   @ViewChild('chartContainer') chartContainer!: ElementRef;
-  chart!: IChartApi;  
+  chart!: IChartApi;
 
-  myChart(): void {  
-    var container = this.chartContainer.nativeElement; 
+  symbols: KrakenSymbol[] = KRANKEN_SYMBOLS;
+  symbol = this.symbols[0].symbol;
 
-    const chartContainerElement: HTMLElement = this.chartContainer.nativeElement;  
+  changeSymbol(_symbol: any) {
+    this.symbol = _symbol;
+    this.myChart();
+  }
+
+  getClassColor(_symbol: any) {
+    return _symbol === this.symbol ? 'text-white bg-secondary' : 'text-slate-600 border hover:text-primary-100 bg-white';
+  }
+
+  myChart(): void {
+    var container = this.chartContainer.nativeElement;
+
+    const chartContainerElement: HTMLElement = this.chartContainer.nativeElement;
+
     const chartContainerWidth: number = chartContainerElement.offsetWidth;
-
+    chartContainerElement.innerHTML = "";
     var width = chartContainerWidth;
     var height = 450;
 
@@ -38,8 +52,8 @@ export class BitChartComponent implements AfterViewInit {
       timeScale: {
         borderVisible: false,
       },
-      layout: { 
-        background: {color: '#ffffff' },
+      layout: {
+        background: { color: '#ffffff' },
         textColor: '#333',
       },
       grid: {
@@ -66,6 +80,7 @@ export class BitChartComponent implements AfterViewInit {
       lineWidth: 2,
     });
 
+
     var volumeSeries = chart.addHistogramSeries({
       color: '#26a69a',
       priceFormat: {
@@ -74,25 +89,27 @@ export class BitChartComponent implements AfterViewInit {
       priceScaleId: '',
     });
 
-    this.sharedService.getWithToken('/ohlcvt-1-ds', this.sharedService.getToken()).subscribe({
+    this.krakenService.getOHLCData(this.symbol).subscribe({
       next: (data) => {
-        const priceData = data.map((item: any) => ({
-          time: moment(item.timestamp).format("YYYY-MM-DD"),
-          value: item.close * 1000,
-        })); 
+        const processedData = this.krakenService.processKrakenApiResponse(data);
+        const priceData = processedData.map((item: any) => ({
+          // time: moment(item.timestamp).format("YYYY-MM-DD"),
+          time: item.time,
+          value: item.close * 1,
+        }));
 
-        const volumeData = data.map((item: any) => ({
-          time: moment(item.timestamp).format("YYYY-MM-DD"),
-          value: item.volume,
-          color: item.close < item.high ?  'rgba(0, 150, 136, 0.8)' : 'rgba(255,82,82, 0.8)',
-        })); 
+        const volumeData = processedData.map((item: any) => ({
+          time: item.time,
+          value: item.volume * 1,
+          color: item.close * 1 < item.high ? 'rgba(0, 150, 136, 0.8)' : 'rgba(255,82,82, 0.8)',
+        }));
 
         areaSeries.setData(priceData);
-       //volumeSeries.setData(volumeData);
+        volumeSeries.setData(volumeData);
       },
       error: (error) => { console.error('Error fetching OHLCVT data:', error) }
-    }) 
+    })
 
-     
+
   }
 }

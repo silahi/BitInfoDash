@@ -34,8 +34,7 @@ export class SharedService {
             'Authorization': `Bearer ${token}`
         });
         return this.httpClient.get(url, { headers });
-    }
-
+    } 
 
     public createElement(endpoint: string, data: any): Observable<any> {
         const url = `${API_URL}${endpoint}`;
