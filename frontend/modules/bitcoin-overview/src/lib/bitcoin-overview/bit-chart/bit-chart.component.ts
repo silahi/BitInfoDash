@@ -88,7 +88,7 @@ export class BitChartComponent implements AfterViewInit {
         })); 
 
         areaSeries.setData(priceData);
-        volumeSeries.setData(volumeData);
+       //volumeSeries.setData(volumeData);
       },
       error: (error) => { console.error('Error fetching OHLCVT data:', error) }
     }) 

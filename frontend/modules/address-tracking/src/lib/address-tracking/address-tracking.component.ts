@@ -36,6 +36,11 @@ export class AddressTrackingComponent implements OnInit {
   private sessionService: SessionStorageService;
   private mempoolService: MempoolService
   buttonCoordinates: { top: number, left: number } = { top: 0, left: 0 };
+  cta = true;
+
+  hideCTA() {
+    this.cta = false;
+  }
 
   constructor(sessionStorageService: SessionStorageService, mempoolApiService: MempoolService) {
     this.sessionService = sessionStorageService;
@@ -45,6 +50,7 @@ export class AddressTrackingComponent implements OnInit {
     this.addresses = this.sessionService.retrieve(ADDRESSES_SESSION_KEY) ?? [];
     const updatedAddresses: MempoolAddress[] = [];
     if (this.addresses.length > 0) {
+      this.cta = false;
       this.addresses.forEach((address: MempoolAddress) => {
         const alabel = address.label;
         this.mempoolService.getAddressInfo(address.address).subscribe({
@@ -63,12 +69,8 @@ export class AddressTrackingComponent implements OnInit {
   }
   showModal: boolean = false;
 
-  openModal(event: MouseEvent) {
-    this.buttonCoordinates = {
-      top: event.clientY,
-      left: event.clientX,
-    };
-
+  openModal() {
+    this.cta = false;
     this.showModal = true;
   }
 

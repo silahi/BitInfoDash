@@ -1,14 +1,46 @@
 <header class="bg-white space-y-4 p-4 sm:px-8 sm:py-6 lg:p-4 xl:px-8 xl:py-6">
+    <div *ngIf="cta" class="bg-white">
+        <div class="mx-auto w-full">
+            <div
+                class="relative isolate overflow-hidden bg-white  sm:rounded-lg sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-16 lg:pt-0">
+                <svg viewBox="0 0 1024 1024"
+                    class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
+                    aria-hidden="true">
+                    <circle cx="512" cy="512" r="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)"
+                        fill-opacity="0.7" />
+                    <defs>
+                        <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
+                            <stop stop-color="#7775D6" />
+                            <stop offset="1" stop-color="#0097b2" />
+                        </radialGradient>
+                    </defs>
+                </svg>
+                <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-700 ">Prenez le contrôle de vos
+                        finances
+                        crypto.<br>
+                        Commencez à suivre vos adresses Bitcoin dès aujourd'hui.</h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-700"> Surveillez facilement vos transactions Bitcoin,
+                        identifiez les tendances et anticipez les risques
+                        potentiels grâce à notre puissant outil de suivi d'adresses.</p>
+                    <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+                        <button (click)="openModal()"
+                            class="rounded-md bg-secondary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                            Commencer
+                        </button>
+                    </div>
+                </div>
+                <div class="relative mt-16 h-80 lg:mt-8">
+                    <img class="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
+                        src="./assets/images/CTA.png"
+                        alt="App screenshot" width="1824" height="1080">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="flex items-center justify-between">
         <h2 class="font-semibold text-slate-700">Adresses</h2>
-        <button (click)="openModal($event)"
-            class="hover:bg-secondary-400 group flex items-center rounded-md bg-accent text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
-            <svg width="20" height="20" fill="currentColor" class="mr-2" aria-hidden="true">
-                <path
-                    d="M10 5a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2h-3v3a1 1 0 1 1-2 0v-3H6a1 1 0 1 1 0-2h3V6a1 1 0 0 1 1-1Z" />
-            </svg>
-            Ajouter
-        </button>
     </div>
     <form class="group relative">
         <svg width="20" height="20" fill="currentColor"
@@ -17,7 +49,8 @@
             <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" />
         </svg>
-        <input
+        <input #filterInput
+        (focus)="openModal()"
             class="focus:ring-2 ring-primary-60 focus:ring-secondary focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm"
             type="text" aria-label="Filter projects" placeholder="Rechercher une adresse...">
     </form>
@@ -36,6 +69,12 @@
     </div>
 </div>
 
+
+
+
+
+
+
 <!--Dialog-->
 <div class="fixed z-10 inset-0 overflow-y-auto" *ngIf="showModal">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -53,7 +92,8 @@
                 <form>
                     <div class="space-y-6">
                         <div class="border-b border-gray-900/10 ">
-                            <h2 class="text-base font-semibold leading-7 text-gray-800">Ajout d'une nouvelle adresse </h2>
+                            <h2 class="text-base font-semibold leading-7 text-gray-800">Ajout d'une nouvelle adresse
+                            </h2>
                         </div>
 
                         <div class="pb-4">
@@ -73,7 +113,8 @@
 
                         <div class="border-b border-gray-900/10 pb-8">
                             <h2 class="text-base font-semibold leading-7 text-gray-500">Adresse bitcoin</h2>
-                            <p class="mt-1 text-sm leading-6 text-gray-600"> Assurez-vous de fournir une adresse bitcoin valide .</p>
+                            <p class="mt-1 text-sm leading-6 text-gray-600"> Assurez-vous de fournir une adresse bitcoin
+                                valide .</p>
                             <div class="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                 <div class="col-span-full">
                                     <div class="mt-1">
@@ -89,8 +130,14 @@
                     <div class="mt-6 flex items-center justify-end gap-x-6">
                         <button type="button" (click)="closeModal()"
                             class="text-sm font-semibold leading-6 text-gray-900">Annuler</button>
-                        <button type="submit" (click)="saveAddress()"
-                            class="rounded-md bg-secondary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Enregistrer</button>
+                        <button (click)="saveAddress()"
+                            class="hover:bg-secondary-400 group flex items-center rounded-md bg-accent text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
+                            <svg width="20" height="20" fill="currentColor" class="mr-2" aria-hidden="true">
+                                <path
+                                    d="M10 5a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2h-3v3a1 1 0 1 1-2 0v-3H6a1 1 0 1 1 0-2h3V6a1 1 0 0 1 1-1Z" />
+                            </svg>
+                            Ajouter
+                        </button>
                     </div>
                 </form>
 
