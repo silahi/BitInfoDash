@@ -4,4 +4,6 @@ export const environment = {
     mempool: 'https://mempool.space/testnet/api',
     mempoolNetwork: 'testnet',
     mempoolHostname: 'mempool.space',
+    krakenAPIURL: "https://api.kraken.com/0/public",
+
 };
