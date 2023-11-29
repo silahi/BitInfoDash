@@ -25,10 +25,10 @@
                         <button
                             class="rounded-md bg-secondary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                             Explorez BitInfoDash
-                        </button> 
+                        </button>
                         <img src="./assets/images/down.gif" class="h-16 w-16" alt="">
                     </div>
-                    
+
                 </div>
                 <div class="relative mt-16 h-80 lg:mt-8">
                     <img class="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
@@ -37,7 +37,10 @@
             </div>
         </div>
     </div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 mt-8 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-700 ">Statistiques actuelles du Bitcoin</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-700">Performance du marché du Bitcoin :  le dernier prix, la variation en pourcentage sur 24 heures. <br>
+            Volume des échanges et sa variation en pourcentage au cours des dernières 24 heures et la capitalisation boursière. </p>
         <div *ngIf="bitcoinData">
             <div
                 class="p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-3 gap-4 text-sm leading-6">
@@ -46,10 +49,9 @@
                 <bit-info-dash-bitcoin-info title="Volume d'échange" src="../../assets/images/volume.png"
                     [amount]="bitcoinData.exchangeVolume" [variation]="bitcoinData.volumeChange24h" />
                 <bit-info-dash-bitcoin-info title="Capitalisation Boursière" src="../../assets/images/cap.png"
-                    [amount]="bitcoinData.marketCap" [variation]="bitcoinData.percentChange1h" />
+                    [amount]="bitcoinData.marketCap" />
             </div>
         </div>
     </div>
 </header>
-
 <bit-info-dash-bit-chart></bit-info-dash-bit-chart>

@@ -1,23 +1,19 @@
-<div
-    class="py-8 px-8 hover:border-cyan-500 hover:border-solid hover:text-blue-500  max-w-sm mx-auto bg-white 
-    rounded-xl border shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
-
-    <div class="text-center space-y-2 sm:text-left">
+<div class="py-8 px-4 hover:border-cyan-500 hover:border-solid hover:text-blue-500  max-w-sm mx-auto bg-white 
+    rounded-xl border shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">  
+    <div class="text-center flex flex-row items-end  space-y-2 sm:text-left">
         <div class="space-y-0.5">
-            <p class="text-black">
+            <p class="text-black text-lg font-semibold text-gray-500">
                 {{title}}
-            </p> 
-            <div class="text-lg font-semibold text-slate-700">
+            </p>
+            <div class="text-lg font-semibold text-gray-600">
                 ${{(amount).toFixed(2)}}
             </div>
         </div>
-        <button [ngClass]="getVariationColorClass()" class="px-4 py-1 text-sm
-             rounded-xl border border-cyan-200 hover:text-white hover:bg-cyan-600 hover:border-transparent 
-             focus:outline-none focus:ring-2 focus:ring-cyan-600 focus:ring-offset-2">
+        <div *ngIf="variation" [ngClass]="getVariationColorClass()" class="px-4 text-sm ">
 
-            {{(variation* 100).toFixed(2)}} %
+            {{(variation* 100).toFixed(2)}} % (24H)
 
-        </button>
+        </div>
 
     </div>
 </div>
