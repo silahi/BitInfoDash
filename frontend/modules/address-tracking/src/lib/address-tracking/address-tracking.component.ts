@@ -27,7 +27,7 @@ export class AddressTrackingComponent implements OnInit {
 
   currentAddress: string = "";
   showChart = false;
-  amountChart = true; 
+  amountChart = true;
   feeChart = false;
   confirmationChart = false;
   metric = "amount";
@@ -39,6 +39,10 @@ export class AddressTrackingComponent implements OnInit {
 
   selectAddress(saddress: string) {
     this.currentAddress = saddress;
+  }
+
+  convertDate(date_: any) {
+    return new Date(date_ * 1000);
   }
 
   getColorClass(classFor: boolean): string {
@@ -63,20 +67,20 @@ export class AddressTrackingComponent implements OnInit {
 
   chartFor(metric: string) {
     if (metric === 'amount') {
-      this.amountChart = true; 
+      this.amountChart = true;
       this.feeChart = false;
       this.confirmationChart = false;
       this.chartTitle = "du montant des transaction";
     }
 
     if (metric === 'fee') {
-      this.amountChart = false; 
+      this.amountChart = false;
       this.feeChart = true;
       this.confirmationChart = false;
       this.chartTitle = "des frais de transactions";
     }
     if (metric === 'confirmation') {
-      this.amountChart = false; 
+      this.amountChart = false;
       this.feeChart = false;
       this.confirmationChart = true;
       this.chartTitle = "du nombre de confirmations";
@@ -132,7 +136,7 @@ export class AddressTrackingComponent implements OnInit {
       bottomColor: 'rgba(0, 150, 136, 0.04)',
       lineColor: 'rgba(0, 150, 136, 1)',
       lineWidth: 2,
-      lastValueVisible: true, 
+      lastValueVisible: true,
     });
 
     data.sort((a: any, b: any) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime());
